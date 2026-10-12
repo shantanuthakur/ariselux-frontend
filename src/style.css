@@ -3237,32 +3237,34 @@ body.nav-open .floating-actions,
 /* ── About Hero Showcase (Clean Professional Catalog Style) ── */
 .about-hero-showcase-section {
   background: #ffffff;
-  padding: 50px 0 60px;
+  padding: 50px 0 70px;
   position: relative;
   overflow: visible;
 }
 
 .about-hero-grid {
   display: grid;
-  grid-template-columns: 52% 48%;
-  gap: 48px;
-  align-items: center;
+  grid-template-columns: 54% 46%;
+  gap: 40px;
+  align-items: flex-start;
 }
 
 .about-hero-tower-col {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  position: relative;
+  position: sticky;
+  top: 75px;
   background: transparent;
   perspective: 1200px;
   transform-style: preserve-3d;
+  z-index: 2;
 }
 
 @media (min-width: 1200px) {
   .about-hero-tower-col {
-    margin-left: 0;
+    margin-left: -35px;
   }
 }
 
@@ -3277,12 +3279,12 @@ body.nav-open .floating-actions,
 .tower-stage-container {
   position: relative;
   width: 100%;
-  max-width: 680px;
+  max-width: 720px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px 10px 25px;
+  padding: 0;
 }
 
 /* Subtle showroom studio vignette glow */
@@ -3291,16 +3293,16 @@ body.nav-open .floating-actions,
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 95%;
-  height: 90%;
-  background: radial-gradient(ellipse at center, rgba(244, 121, 32, 0.07) 0%, rgba(27, 95, 170, 0.04) 40%, rgba(255, 255, 255, 0) 70%);
+  width: 105%;
+  height: 95%;
+  background: radial-gradient(ellipse at center, rgba(244, 121, 32, 0.08) 0%, rgba(27, 95, 170, 0.04) 45%, rgba(255, 255, 255, 0) 70%);
   pointer-events: none;
   z-index: 1;
 }
 
 .about-hero-tower-img {
   width: 100%;
-  max-width: 640px;
+  max-width: 650px;
   height: auto;
   max-height: min(84vh, 790px);
   object-fit: contain;
@@ -3318,8 +3320,8 @@ body.nav-open .floating-actions,
 .tower-ground-shadow {
   position: relative;
   z-index: 1;
-  width: 86%;
-  height: 25px;
+  width: 88%;
+  height: 26px;
   margin-top: -12px;
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.07) 50%, rgba(0, 0, 0, 0) 75%);
   filter: blur(5px);
@@ -3407,13 +3409,15 @@ body.nav-open .floating-actions,
 @media (max-width: 991px) {
   .about-hero-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
   .about-hero-tower-col {
+    position: static;
     order: -1;
   }
   .about-hero-tower-img {
-    max-height: 560px;
+    max-height: 580px;
+    max-width: 520px;
   }
   .about-stats-clean {
     grid-template-columns: repeat(2, 1fr);
