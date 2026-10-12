@@ -13,6 +13,7 @@ export default defineConfig({
         products: resolve(import.meta.dirname, 'products.html'),
         contact: resolve(import.meta.dirname, 'contact.html'),
         productDetail: resolve(import.meta.dirname, 'product-detail.html'),
+        careers: resolve(import.meta.dirname, 'careers.html'),
       },
     },
   },

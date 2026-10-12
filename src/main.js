@@ -1263,3 +1263,195 @@ initEnquiryModal();
     targetRY = 0;
   });
 })();
+
+// ============================================
+// --- CAREER APPLICATION FORM (With Resume Upload & 10MB Limit) ---
+// ============================================
+function initCareerForm() {
+  const form = document.getElementById('careerApplicationForm');
+  if (!form) return;
+
+  const fileInput = document.getElementById('careerResumeInput');
+  const dropzone = document.getElementById('resumeDropzone');
+  const uploadPrompt = document.getElementById('resumeUploadPrompt');
+  const filePreview = document.getElementById('resumeFilePreview');
+  const fileNameEl = document.getElementById('resumeFileName');
+  const fileSizeEl = document.getElementById('resumeFileSize');
+  const removeBtn = document.getElementById('resumeRemoveBtn');
+  const warningEl = document.getElementById('resumeWarning');
+  const warningText = document.getElementById('resumeWarningText');
+  const statusEl = document.getElementById('careerFormStatus');
+  const submitBtn = document.getElementById('careerSubmitBtn');
+
+  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+
+  function resetFile() {
+    if (fileInput) fileInput.value = '';
+    if (uploadPrompt) uploadPrompt.style.display = 'block';
+    if (filePreview) filePreview.style.display = 'none';
+  }
+
+  function showWarning(msg) {
+    if (warningEl && warningText) {
+      warningText.textContent = msg;
+      warningEl.style.display = 'block';
+    }
+  }
+
+  function hideWarning() {
+    if (warningEl) warningEl.style.display = 'none';
+  }
+
+  function formatBytes(bytes) {
+    if (bytes < 1024 * 1024) {
+      return (bytes / 1024).toFixed(1) + ' KB';
+    }
+    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+  }
+
+  function handleFileSelected(file) {
+    hideWarning();
+    if (!file) {
+      resetFile();
+      return;
+    }
+
+    // CHECK FILE SIZE: STRICTLY REJECT IF > 10MB
+    if (file.size > MAX_FILE_SIZE) {
+      const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
+      showWarning(`⚠️ File too large! Your selected resume is ${sizeMb} MB, which exceeds the 10 MB limit. The file was rejected. Please select a resume file under 10 MB.`);
+      resetFile();
+      return;
+    }
+
+    // VALID FILE
+    if (fileNameEl) fileNameEl.textContent = file.name;
+    if (fileSizeEl) fileSizeEl.textContent = `${formatBytes(file.size)} • Ready to upload ✓`;
+    if (uploadPrompt) uploadPrompt.style.display = 'none';
+    if (filePreview) filePreview.style.display = 'flex';
+  }
+
+  if (dropzone && fileInput) {
+    dropzone.addEventListener('click', (e) => {
+      if (e.target !== removeBtn && !removeBtn?.contains(e.target)) {
+        fileInput.click();
+      }
+    });
+
+    dropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropzone.style.borderColor = 'var(--primary, #1b5faa)';
+      dropzone.style.background = '#f0f9ff';
+    });
+
+    dropzone.addEventListener('dragleave', () => {
+      dropzone.style.borderColor = '#94a3b8';
+      dropzone.style.background = '#f8fafc';
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.style.borderColor = '#94a3b8';
+      dropzone.style.background = '#f8fafc';
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        fileInput.files = e.dataTransfer.files;
+        handleFileSelected(e.dataTransfer.files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files && fileInput.files.length > 0) {
+        handleFileSelected(fileInput.files[0]);
+      } else {
+        resetFile();
+      }
+    });
+
+    if (removeBtn) {
+      removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        resetFile();
+        hideWarning();
+      });
+    }
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideWarning();
+    if (statusEl) statusEl.style.display = 'none';
+
+    // Validate file presence and size
+    const file = fileInput?.files?.[0];
+    if (!file) {
+      showWarning('Please select and attach your resume file (PDF / DOC under 10 MB).');
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      showWarning(`Your selected resume (${(file.size / (1024 * 1024)).toFixed(1)} MB) exceeds the 10 MB limit. Please choose a smaller file.`);
+      resetFile();
+      return;
+    }
+
+    const formData = new FormData(form);
+
+    const origBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Submitting Application & Uploading Resume...';
+    }
+
+    try {
+      const response = await fetch(apiUrl('careers'), {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        if (statusEl) {
+          statusEl.style.display = 'block';
+          statusEl.style.background = '#f0fdf4';
+          statusEl.style.border = '1.5px solid #86efac';
+          statusEl.style.color = '#166534';
+          statusEl.innerHTML = `
+            <strong style="display:block; font-size:15px; margin-bottom:4px;">🎉 Application Submitted Successfully!</strong>
+            <div>${data.message}</div>
+            <div style="margin-top:6px; font-size:12.5px; color:#15803d;">Application Ref: <strong>#${data.applicationId}</strong> &bull; Resume: <strong>${data.candidate?.resumeName || file.name}</strong></div>
+          `;
+        }
+        form.reset();
+        resetFile();
+      } else {
+        if (statusEl) {
+          statusEl.style.display = 'block';
+          statusEl.style.background = '#fef2f2';
+          statusEl.style.border = '1.5px solid #fca5a5';
+          statusEl.style.color = '#991b1b';
+          statusEl.textContent = data.message || 'Failed to submit application. Please check your details and try again.';
+        }
+      }
+    } catch (err) {
+      console.error('Career submit error:', err);
+      if (statusEl) {
+        statusEl.style.display = 'block';
+        statusEl.style.background = '#fffbeb';
+        statusEl.style.border = '1.5px solid #fde68a';
+        statusEl.style.color = '#92400e';
+        statusEl.innerHTML = `
+          <strong>Connection issue:</strong> Could not connect to the backend server. You can also directly email your resume to <a href="mailto:sales@ariselux.com" style="color:#1b5faa;font-weight:700;text-decoration:underline;">sales@ariselux.com</a>.
+        `;
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origBtnHtml;
+      }
+    }
+  });
+}
+
+initCareerForm();
+
