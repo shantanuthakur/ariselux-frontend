@@ -3234,18 +3234,18 @@ body.nav-open .floating-actions,
   align-items: center;
 }
 
-/* ── About Hero Showcase (Clean White Catalog Style matching user reference) ── */
+/* ── About Hero Showcase (Clean Professional Catalog Style) ── */
 .about-hero-showcase-section {
   background: #ffffff;
-  padding: 40px 0 50px;
+  padding: 50px 0 60px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .about-hero-grid {
   display: grid;
-  grid-template-columns: 48% 52%;
-  gap: 40px;
+  grid-template-columns: 52% 48%;
+  gap: 48px;
   align-items: center;
 }
 
@@ -3262,7 +3262,7 @@ body.nav-open .floating-actions,
 
 @media (min-width: 1200px) {
   .about-hero-tower-col {
-    margin-left: -50px; /* Bleed left like lightingtowers.in .prodlightleft */
+    margin-left: 0;
   }
 }
 
@@ -3274,66 +3274,60 @@ body.nav-open .floating-actions,
   align-items: center;
 }
 
+.tower-stage-container {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px 25px;
+}
+
+/* Subtle showroom studio vignette glow */
+.tower-radial-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  height: 90%;
+  background: radial-gradient(ellipse at center, rgba(244, 121, 32, 0.07) 0%, rgba(27, 95, 170, 0.04) 40%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .about-hero-tower-img {
   width: 100%;
-  max-width: 660px;
+  max-width: 640px;
   height: auto;
-  max-height: 780px;
+  max-height: min(84vh, 790px);
   object-fit: contain;
   display: block;
   background: transparent;
-  /* Pure alpha transparency - NO mix-blend-mode to avoid grey boxes */
-  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.12));
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.10));
   will-change: transform;
-  transform-origin: center center;
-  transition: opacity 0.25s ease;
+  transform-origin: center bottom;
+  transition: transform 0.25s ease-out;
 }
 
-/* Sleek View Switcher Pills under the tower */
-.tower-view-switcher {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 20px;
-  padding: 6px 10px;
-  background: rgba(245, 245, 247, 0.9);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 999px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-  z-index: 5;
+/* Ground contact shadow underneath wheels & outriggers */
+.tower-ground-shadow {
+  position: relative;
+  z-index: 1;
+  width: 86%;
+  height: 25px;
+  margin-top: -12px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.07) 50%, rgba(0, 0, 0, 0) 75%);
+  filter: blur(5px);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.tower-view-switcher .view-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: none;
-  background: transparent;
-  color: #555555;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
 
-.tower-view-switcher .view-btn:hover {
-  color: #111111;
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.tower-view-switcher .view-btn.active {
-  background: #000000;
-  color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-}
-
-.tower-view-switcher .view-btn.active svg {
-  stroke: var(--accent, #F47920);
-}
 
 
 .about-hero-content-col {
@@ -3419,7 +3413,7 @@ body.nav-open .floating-actions,
     order: -1;
   }
   .about-hero-tower-img {
-    max-height: 480px;
+    max-height: 560px;
   }
   .about-stats-clean {
     grid-template-columns: repeat(2, 1fr);
