@@ -2,6 +2,7 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "ariselux-frontend",
   "compatibility_date": "2026-10-09",
+  "workers_dev": true,
   "assets": {
     "directory": "./dist"
   }

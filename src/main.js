@@ -3,7 +3,9 @@
    Full Interactive Functionality
    ============================================ */
 
-let rawApiUrl = (import.meta.env.VITE_API_URL || '/api').replace(/\/+$/, '');
+// ariselux.com is a static Worker site, so it does not proxy /api requests.
+// Use the API Worker unless a local/deployment environment overrides it.
+let rawApiUrl = (import.meta.env.VITE_API_URL || 'https://ariselux-backend.sales3-a0c.workers.dev/api').replace(/\/+$/, '');
 if (rawApiUrl.includes(':5001')) {
   rawApiUrl = rawApiUrl.replace(':5001', ':5000');
 }
@@ -1458,4 +1460,3 @@ function initCareerForm() {
 }
 
 initCareerForm();
-
