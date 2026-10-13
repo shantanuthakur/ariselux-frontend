@@ -31,7 +31,7 @@ if (header) {
 function updateActiveNavLink() {
   const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
   const navLinks = document.querySelectorAll('.nav-menu a, .mobile-nav a');
-  
+
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
     if (!href || href.startsWith('#') || href.startsWith('tel:') || href.startsWith('mailto:') || href.startsWith('http')) {
@@ -454,7 +454,7 @@ function initRequestForQuotation() {
   window.__rfqInitialized = true;
 
   const productContainers = document.querySelectorAll('.product-card-image, .product-detail-image');
-  
+
   // Inject RFQ Modal if not already in DOM
   let rfqModal = document.getElementById('rfq-modal');
   if (!rfqModal) {
@@ -621,7 +621,7 @@ function initRequestForQuotation() {
 
   function openRFQModal(productInfo) {
     const { title, imgSrc, specs } = productInfo;
-    
+
     // Set selected item fields
     rfqProductName.textContent = title;
     rfqProductThumb.src = imgSrc || '/images/hero/hero-bg.png';
@@ -792,7 +792,7 @@ function initRequestForQuotation() {
 
         if (response.ok && data.success) {
           const quoteId = data.quotation ? data.quotation.id : 'Recorded';
-          
+
           // Show Success View
           rfqForm.style.display = 'none';
           rfqSuccessView.style.display = 'block';
@@ -820,11 +820,11 @@ function initRequestForQuotation() {
         console.warn('RFQ API submission fallback:', err);
         const waNotes = specifications || 'Official quotation requested.';
         const waText = encodeURIComponent(`Hello Ariselux Sales Desk, I would like to request a quotation:\n*Product:* ${product}\n*Quantity:* ${quantity}\n*Timeline:* ${deliveryTimeline}\n*Buyer:* ${name} (${company})\n*Phone:* ${phone}\n*Details:* ${waNotes}`);
-        
+
         // Show Success with direct WhatsApp option
         rfqForm.style.display = 'none';
         rfqSuccessView.style.display = 'block';
-        
+
         const refPill = document.getElementById('rfq-ref-id');
         if (refPill) refPill.textContent = `Instant WhatsApp Connect`;
 
@@ -1171,7 +1171,7 @@ function initEnquiryModal() {
 
           const waBtn = document.getElementById('enquiry-wa-direct-btn');
           if (waBtn) {
-            const waText = encodeURIComponent(`Hello Ariselux Engineering Desk, I submitted an enquiry (Ref #${inqId}):\n*Name:* ${name}\n*Nature:* ${enquiryType}\n*Product:* ${product}\n*Phone:* ${phone}\n*Query:* ${userMessage}`);
+            const waText = encodeURIComponent(`Hello Ariselux Enquiry Desk, I submitted an enquiry (Ref #${enqId}):\n*Name:* ${name}\n*Nature:* ${enquiryType}\n*Product:* ${product}\n*Phone:* ${phone}\n*Query:* ${userMessage}`);
             waBtn.href = data.whatsappDirectUrl || `https://wa.me/918126732502?text=${waText}`;
           }
 
