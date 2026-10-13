@@ -508,25 +508,25 @@ function initRequestForQuotation() {
               <!-- Full Name -->
               <div class="rfq-form-group">
                 <label class="rfq-label" for="rfq-input-name">Full Name <span class="req">*</span></label>
-                <input type="text" id="rfq-input-name" name="name" class="rfq-input" placeholder="e.g. Your Name" required>
+                <input type="text" id="rfq-input-name" name="name" class="rfq-input" placeholder="Your Name" required>
               </div>
 
               <!-- Company Name -->
               <div class="rfq-form-group">
                 <label class="rfq-label" for="rfq-input-company">Company / Organization <span class="req">*</span></label>
-                <input type="text" id="rfq-input-company" name="company" class="rfq-input" placeholder="e.g. L&T Infrastructure / NTPC" required>
+                <input type="text" id="rfq-input-company" name="company" class="rfq-input" placeholder="Your Company / Organization" required>
               </div>
 
               <!-- Work Email -->
               <div class="rfq-form-group">
                 <label class="rfq-label" for="rfq-input-email">Work Email <span class="req">*</span></label>
-                <input type="email" id="rfq-input-email" name="email" class="rfq-input" placeholder="e.g. name@company.com" required>
+                <input type="email" id="rfq-input-email" name="email" class="rfq-input" placeholder="Your Email Address" required>
               </div>
 
               <!-- Phone Number -->
               <div class="rfq-form-group">
                 <label class="rfq-label" for="rfq-input-phone">Phone / WhatsApp <span class="req">*</span></label>
-                <input type="tel" id="rfq-input-phone" name="phone" class="rfq-input" placeholder="e.g. +91 98765 43210" required>
+                <input type="tel" id="rfq-input-phone" name="phone" class="rfq-input" placeholder="Your Phone Number" required>
               </div>
 
               <!-- Quantity Required -->
@@ -554,7 +554,7 @@ function initRequestForQuotation() {
               <!-- Project Location / Delivery Site -->
               <div class="rfq-form-group">
                 <label class="rfq-label" for="rfq-input-location">Delivery City / Site <span class="req">*</span></label>
-                <input type="text" id="rfq-input-location" name="location" class="rfq-input" placeholder="e.g. Roorkee, Gujarat, Delhi NCR" required>
+                <input type="text" id="rfq-input-location" name="location" class="rfq-input" placeholder="Your Address" required>
               </div>
 
               <!-- Company GSTIN (Optional) -->
@@ -902,25 +902,25 @@ function initEnquiryModal() {
               <!-- Full Name -->
               <div class="enquiry-form-group">
                 <label class="enquiry-label" for="enquiry-input-name">Full Name <span class="req">*</span></label>
-                <input type="text" id="enquiry-input-name" name="name" class="enquiry-input" placeholder="e.g. Your Name" required>
+                <input type="text" id="enquiry-input-name" name="name" class="enquiry-input" placeholder="Your Name" required>
               </div>
 
               <!-- Contact Mobile -->
               <div class="enquiry-form-group">
                 <label class="enquiry-label" for="enquiry-input-phone">Phone / WhatsApp Number <span class="req">*</span></label>
-                <input type="tel" id="enquiry-input-phone" name="phone" class="enquiry-input" placeholder="e.g. +91 98765 43210" required>
+                <input type="tel" id="enquiry-input-phone" name="phone" class="enquiry-input" placeholder="Your Phone Number" required>
               </div>
 
               <!-- Work Email -->
               <div class="enquiry-form-group">
                 <label class="enquiry-label" for="enquiry-input-email">Official / Work Email <span class="req">*</span></label>
-                <input type="email" id="enquiry-input-email" name="email" class="enquiry-input" placeholder="e.g. name@company.com" required>
+                <input type="email" id="enquiry-input-email" name="email" class="enquiry-input" placeholder="Your Email Address" required>
               </div>
 
               <!-- Company / Organization -->
               <div class="enquiry-form-group">
                 <label class="enquiry-label" for="enquiry-input-company">Company / Organization <span style="font-weight:400;color:#64748b;font-size:11px;">(Optional)</span></label>
-                <input type="text" id="enquiry-input-company" name="company" class="enquiry-input" placeholder="e.g. Infrastructure, Contractor, PSU">
+                <input type="text" id="enquiry-input-company" name="company" class="enquiry-input" placeholder="Your Company / Organization (Optional)">
               </div>
 
               <!-- Nature of Enquiry (Best field for enquiry!) -->
@@ -955,7 +955,7 @@ function initEnquiryModal() {
               <!-- City / State -->
               <div class="enquiry-form-group full-width">
                 <label class="enquiry-label" for="enquiry-input-location">City / State / Site Location</label>
-                <input type="text" id="enquiry-input-location" name="location" class="enquiry-input" placeholder="e.g. Roorkee, Ahmedabad, Delhi NCR, Hyderabad">
+                <input type="text" id="enquiry-input-location" name="location" class="enquiry-input" placeholder="Your Address">
               </div>
 
               <!-- Preferred Response Channel -->
