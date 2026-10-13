@@ -125,38 +125,6 @@ function renderProductDetail() {
     };
   }
 
-  // Detailed Categorized Specifications Grid
-  const detailedSpecsContainer = document.getElementById('detailed-spec-sections');
-  if (detailedSpecsContainer && product.specSheetData && product.specSheetData.sections) {
-    detailedSpecsContainer.innerHTML = `
-      <div class="detailed-specs-header">
-        <div>
-          <h3>Factory Technical Specification Breakdown</h3>
-          <p>Complete engineering ratings and verified parameters for ${product.title}.</p>
-        </div>
-      </div>
-      <div class="detailed-specs-cards-grid">
-        ${product.specSheetData.sections.map(sec => `
-          <div class="detailed-spec-card">
-            <div class="detailed-spec-card-head">
-              <h4>${sec.category}</h4>
-            </div>
-            <table class="detailed-spec-card-table">
-              <tbody>
-                ${sec.items.map(item => `
-                  <tr>
-                    <td class="param-label">${item.name}</td>
-                    <td class="param-val">${item.value}</td>
-                  </tr>
-                `).join('')}
-              </tbody>
-            </table>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
   // Main Image & Gallery
   const mainImg = document.getElementById('main-product-img');
   if (mainImg) {
