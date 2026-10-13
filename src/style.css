@@ -517,7 +517,7 @@ p {
   z-index: 10010;
   padding: 12px 0;
   background: #0a0a0a;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
   transition: padding 0.3s ease;
 }
@@ -614,7 +614,7 @@ img.footer-logo,
 }
 
 .nav-menu a {
-  color: rgba(255,255,255,0.82);
+  color: rgba(255, 255, 255, 0.82);
   font-size: 15px;
   font-weight: 650;
   text-transform: none;
@@ -658,7 +658,7 @@ img.footer-logo,
   align-items: center;
 }
 
-.nav-dropdown > .nav-dropdown-toggle {
+.nav-dropdown>.nav-dropdown-toggle {
   color: rgba(255, 255, 255, 0.82);
   font-size: 14px;
   font-weight: 600;
@@ -694,8 +694,8 @@ img.footer-logo,
   transition: width 0.3s ease;
 }
 
-.nav-dropdown:hover > .nav-dropdown-toggle,
-.nav-dropdown > .nav-dropdown-toggle:hover {
+.nav-dropdown:hover>.nav-dropdown-toggle,
+.nav-dropdown>.nav-dropdown-toggle:hover {
   color: var(--white);
 }
 
@@ -709,7 +709,7 @@ img.footer-logo,
 }
 
 /* Hide fallback underline on toggle wrapper */
-.nav-dropdown > .nav-dropdown-toggle::after {
+.nav-dropdown>.nav-dropdown-toggle::after {
   display: none !important;
 }
 
@@ -732,12 +732,15 @@ img.footer-logo,
 
 .nav-dropdown-menu {
   position: absolute;
-  top: 100%;           /* No gap — menu starts right below the toggle */
+  top: 100%;
+  /* No gap — menu starts right below the toggle */
   left: 50%;
   transform: translateX(-50%);
   min-width: 220px;
-  background: transparent; /* Outer wrapper is transparent */
-  padding-top: 14px;    /* Visual spacing via padding, not a positional gap */
+  background: transparent;
+  /* Outer wrapper is transparent */
+  padding-top: 14px;
+  /* Visual spacing via padding, not a positional gap */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -750,7 +753,8 @@ img.footer-logo,
 .nav-dropdown-menu::before {
   content: '';
   position: absolute;
-  top: 6px;            /* Sits within the 14px padding-top */
+  top: 6px;
+  /* Sits within the 14px padding-top */
   left: 50%;
   transform: translateX(-50%);
   border-left: 7px solid transparent;
@@ -762,13 +766,14 @@ img.footer-logo,
 .nav-dropdown-menu::after {
   content: '';
   position: absolute;
-  top: 14px;           /* Same as padding-top */
+  top: 14px;
+  /* Same as padding-top */
   left: 0;
   right: 0;
   bottom: 0;
   background: #fff;
   border-radius: 6px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
@@ -905,10 +910,12 @@ img.footer-logo,
   .nav-menu {
     gap: 20px;
   }
+
   .header-actions {
     gap: 8px;
     margin-left: 2px;
   }
+
   .header-cta,
   .header-brochure-btn {
     padding: 8px 14px;
@@ -1046,7 +1053,7 @@ img.footer-logo,
 }
 
 .mobile-nav a.mobile-nav-link,
-.mobile-nav > a {
+.mobile-nav>a {
   color: #ffffff;
   font-size: 17px;
   font-weight: 700;
@@ -1065,7 +1072,7 @@ img.footer-logo,
 }
 
 .mobile-nav a.mobile-nav-link:hover,
-.mobile-nav > a:hover {
+.mobile-nav>a:hover {
   background: rgba(27, 95, 170, 0.18);
   border-color: var(--primary);
   color: #38bdf8;
@@ -1158,7 +1165,7 @@ img.footer-logo,
 
 /* Hide floating actions when mobile nav is active */
 body.nav-open .floating-actions,
-.mobile-nav.active ~ .floating-actions {
+.mobile-nav.active~.floating-actions {
   display: none !important;
   opacity: 0 !important;
   pointer-events: none !important;
@@ -1233,7 +1240,7 @@ body.nav-open .floating-actions,
 
 .hero-subtitle {
   font-size: clamp(15px, 1.6vw, 18px);
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   font-weight: 300;
   max-width: 680px;
   margin: 0 auto 40px;
@@ -1320,7 +1327,7 @@ body.nav-open .floating-actions,
 
 .stat-label {
   font-size: 11px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 600;
@@ -2038,7 +2045,7 @@ body.nav-open .floating-actions,
 }
 
 .cta-text p {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255, 255, 255, 0.55);
   font-size: 16px;
   line-height: 1.75;
 }
@@ -2519,7 +2526,7 @@ img.footer-logo {
   overflow: hidden;
   transition: var(--transition);
   border-radius: 4px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
 }
 
 .product-detail-card:hover {
@@ -2888,8 +2895,15 @@ img.footer-logo {
 }
 
 @keyframes rfqSuccessBounce {
-  0% { transform: scale(0.3); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .rfq-success-title {
@@ -2969,12 +2983,15 @@ img.footer-logo {
   .rfq-form-grid {
     grid-template-columns: 1fr;
   }
+
   .rfq-modal-header {
     padding: 16px 18px;
   }
+
   .rfq-modal-body {
     padding: 16px 18px 20px;
   }
+
   .btn-request-quote-badge {
     padding: 6px 12px;
     font-size: 11px;
@@ -3284,13 +3301,16 @@ img.footer-logo {
   .enquiry-form-grid {
     grid-template-columns: 1fr;
   }
+
   .enquiry-channel-group {
     flex-direction: column;
     gap: 6px;
   }
+
   .enquiry-modal-header {
     padding: 16px 18px;
   }
+
   .enquiry-modal-body {
     padding: 16px 18px 20px;
   }
@@ -3642,14 +3662,17 @@ img.footer-logo {
     grid-template-columns: 1fr;
     gap: 36px;
   }
+
   .about-hero-tower-col {
     position: static;
     order: -1;
   }
+
   .about-hero-tower-img {
     max-height: 580px;
     max-width: 520px;
   }
+
   .about-stats-clean {
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
@@ -3796,6 +3819,7 @@ img.footer-logo {
     grid-template-columns: 1fr;
     gap: 50px;
   }
+
   .vision-mission-grid {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -3806,6 +3830,7 @@ img.footer-logo {
   .about-features-badges {
     grid-template-columns: 1fr;
   }
+
   .tower-floating-specs {
     grid-template-columns: 1fr;
     gap: 8px;
@@ -3988,7 +4013,7 @@ img.footer-logo {
     display: flex;
   }
 
-  /* Hero Section: Flow naturally on mobile & tablets, eliminate excess gaps */
+  /* Hero Section: Flow naturally on mobile & ....tablets, eliminate excess gaps */
   .hero {
     height: auto;
     min-height: auto;
@@ -4130,6 +4155,7 @@ img.footer-logo {
 }
 
 @media (max-width: 768px) {
+
   /* Hide cluttered top info bar on mobile screens */
   .top-bar {
     display: none;
@@ -4238,7 +4264,7 @@ img.footer-logo {
     font-size: 13.5px;
   }
 
-  .brochure-bar > div:last-child {
+  .brochure-bar>div:last-child {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -4829,7 +4855,7 @@ img.footer-logo {
    ============================================ */
 .top-bar {
   background: #070707;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   font-size: 11.5px;
   padding: 7px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -4852,7 +4878,7 @@ img.footer-logo {
 
 .top-bar-contact a,
 .top-bar-contact span {
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -4865,7 +4891,7 @@ img.footer-logo {
 }
 
 .top-bar-badge {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
   font-weight: 500;
   text-transform: none;
   letter-spacing: 1.5px;
@@ -5126,7 +5152,7 @@ img.footer-logo {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
 
 .feature-img-wrapper img {
@@ -5282,7 +5308,7 @@ img.footer-logo {
   height: 480px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
 }
 
 .bestfor-preview img {
@@ -5578,8 +5604,15 @@ img.footer-logo {
 }
 
 @keyframes fadeInTab {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Context Badge Strip */
@@ -5645,6 +5678,7 @@ img.footer-logo {
     grid-template-columns: 1fr;
     gap: 14px;
   }
+
   .action-tab-switcher {
     flex-direction: column;
   }
@@ -6549,6 +6583,7 @@ img.footer-logo {
 
 /* Responsive Breakpoints */
 @media (max-width: 991px) {
+
   .product-hero-grid,
   .discoveothergrid .row,
   .highlights-grid,
@@ -6861,10 +6896,9 @@ img.footer-logo {
   .detailed-specs-cards-grid {
     grid-template-columns: 1fr;
   }
+
   .detailed-spec-card-table td {
     padding: 10px 14px;
     font-size: 13px;
   }
 }
-
-
