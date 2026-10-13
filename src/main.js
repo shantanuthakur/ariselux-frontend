@@ -3,7 +3,11 @@
    Full Interactive Functionality
    ============================================ */
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || '/api').replace(/\/+$/, '');
+let rawApiUrl = (import.meta.env.VITE_API_URL || '/api').replace(/\/+$/, '');
+if (rawApiUrl.includes(':5001')) {
+  rawApiUrl = rawApiUrl.replace(':5001', ':5000');
+}
+const API_BASE_URL = rawApiUrl;
 
 function apiUrl(path) {
   return `${API_BASE_URL}/${String(path).replace(/^\/+/, '')}`;

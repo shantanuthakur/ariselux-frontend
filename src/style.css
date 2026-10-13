@@ -6762,4 +6762,109 @@ img.footer-logo {
   }
 }
 
+/* ── Categorized Detailed Specification Breakdown ── */
+.detailed-specs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 22px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.detailed-specs-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0b1b3d;
+  margin: 0;
+}
+
+.detailed-specs-header p {
+  font-size: 14px;
+  color: #64748b;
+  margin: 4px 0 0;
+}
+
+.detailed-specs-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+.detailed-spec-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.detailed-spec-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.detailed-spec-card-head {
+  background: #0b1b3d;
+  padding: 14px 20px;
+}
+
+.detailed-spec-card-head h4 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.detailed-spec-card-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.detailed-spec-card-table tr {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.detailed-spec-card-table tr:last-child {
+  border-bottom: none;
+}
+
+.detailed-spec-card-table tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.detailed-spec-card-table td {
+  padding: 12px 18px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.detailed-spec-card-table .param-label {
+  font-weight: 600;
+  color: #1e293b;
+  width: 44%;
+  border-right: 1px solid #e2e8f0;
+}
+
+.detailed-spec-card-table .param-val {
+  color: #475569;
+  width: 56%;
+}
+
+@media (max-width: 768px) {
+  .detailed-specs-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .detailed-spec-card-table td {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
+
 

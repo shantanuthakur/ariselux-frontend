@@ -1,6 +1,11 @@
 import { productsData } from './products-data.js';
+import { downloadSpecSheet } from './spec-sheet-generator.js';
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || '/api').replace(/\/+$/, '');
+let rawApiUrl = (import.meta.env.VITE_API_URL || '/api').replace(/\/+$/, '');
+if (rawApiUrl.includes(':5001')) {
+  rawApiUrl = rawApiUrl.replace(':5001', ':5000');
+}
+const API_BASE_URL = rawApiUrl;
 
 function apiUrl(path) {
   return `${API_BASE_URL}/${String(path).replace(/^\/+/, '')}`;
@@ -44,6 +49,112 @@ function renderProductDetail() {
         <span>${spec.value}</span>
       </div>
     `).join('');
+  }
+
+  // Configure Spec Sheet Download Link (Served from Backend API with client fallback)
+  const specBtn = document.getElementById('download-spec-sheet-btn');
+  if (specBtn) {
+    const backendSpecUrl = apiUrl(`products/${product.id}/spec-sheet`);
+    const sanitizedTitle = (product.title || 'Product').replace(/[^a-zA-Z0-9_-]/g, '-');
+    const fileName = `Ariselux-${sanitizedTitle}-Specification-Sheet.pdf`;
+    
+    specBtn.href = backendSpecUrl;
+    specBtn.setAttribute('download', fileName);
+    specBtn.setAttribute('target', '_blank');
+
+    specBtn.onclick = async (e) => {
+      e.preventDefault();
+      const textSpan = specBtn.querySelector('span');
+      const origText = textSpan ? textSpan.textContent : 'Download Spec Sheet';
+      if (textSpan) textSpan.textContent = 'Downloading...';
+
+      // Helper to trigger browser download
+      const triggerDownload = (blob) => {
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = blobUrl;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          document.body.removeChild(a);
+          URL.revokeObjectURL(blobUrl);
+        }, 1500);
+      };
+
+      try {
+        // 1. Try fetching from backend endpoint
+        let resp = await fetch(backendSpecUrl);
+        
+        // 2. If initial fetch was not ok, try relative proxy URL /api/...
+        if (!resp.ok && backendSpecUrl.startsWith('http')) {
+          resp = await fetch(`/api/products/${product.id}/spec-sheet`);
+        } else if (!resp.ok && !backendSpecUrl.startsWith('http')) {
+          resp = await fetch(`http://localhost:5000/api/products/${product.id}/spec-sheet`);
+        }
+
+        if (resp.ok) {
+          const blob = await resp.blob();
+          if (blob.size > 0) {
+            triggerDownload(blob);
+            if (textSpan) textSpan.textContent = 'Downloaded!';
+            setTimeout(() => {
+              if (textSpan) textSpan.textContent = origText;
+            }, 1800);
+            return;
+          }
+        }
+        throw new Error('Backend returned invalid response');
+      } catch (err) {
+        console.warn('Backend spec sheet download error, using client generator fallback:', err);
+        // 3. Fallback: Generate PDF locally so the user is guaranteed to get their download
+        try {
+          await downloadSpecSheet(product, specBtn);
+        } catch (genErr) {
+          console.error('All download methods failed, opening direct URL:', genErr);
+          window.location.href = backendSpecUrl;
+        }
+      } finally {
+        setTimeout(() => {
+          if (textSpan && textSpan.textContent !== 'Downloaded!') {
+            textSpan.textContent = origText;
+          }
+        }, 1800);
+      }
+    };
+  }
+
+  // Detailed Categorized Specifications Grid
+  const detailedSpecsContainer = document.getElementById('detailed-spec-sections');
+  if (detailedSpecsContainer && product.specSheetData && product.specSheetData.sections) {
+    detailedSpecsContainer.innerHTML = `
+      <div class="detailed-specs-header">
+        <div>
+          <h3>Factory Technical Specification Breakdown</h3>
+          <p>Complete engineering ratings and verified parameters for ${product.title}.</p>
+        </div>
+      </div>
+      <div class="detailed-specs-cards-grid">
+        ${product.specSheetData.sections.map(sec => `
+          <div class="detailed-spec-card">
+            <div class="detailed-spec-card-head">
+              <h4>${sec.category}</h4>
+            </div>
+            <table class="detailed-spec-card-table">
+              <tbody>
+                ${sec.items.map(item => `
+                  <tr>
+                    <td class="param-label">${item.name}</td>
+                    <td class="param-val">${item.value}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        `).join('')}
+      </div>
+    `;
   }
 
   // Main Image & Gallery
