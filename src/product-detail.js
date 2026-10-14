@@ -55,24 +55,18 @@ function renderProductDetail() {
   }
   productSchema.textContent = JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'Product',
+    '@type': 'WebPage',
     name: product.title,
     description: product.description,
     image: (product.gallery?.length ? product.gallery : [product.image]).map(image => (
       new URL(image, window.location.origin).href
     )),
-    sku: product.id,
-    category: `Mobile ${product.categoryName || 'Light Tower'}`,
-    brand: {
-      '@type': 'Brand',
-      name: 'Ariselux'
-    },
-    manufacturer: {
-      '@type': 'Organization',
-      name: 'Ariselux Equipments Private Limited',
-      url: 'https://www.ariselux.com/'
-    },
-    url: productUrl.href
+    url: productUrl.href,
+    about: {
+      '@type': 'Thing',
+      name: `${product.title} mobile light tower`,
+      description: product.description
+    }
   });
 
   // Breadcrumbs
