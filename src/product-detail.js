@@ -29,7 +29,7 @@ function renderProductDetail() {
   if (metaDesc) metaDesc.content = product.description;
 
   // Keep each product URL independently understandable to search engines.
-  const productUrl = new URL('/product-detail.html', window.location.origin);
+  const productUrl = new URL('/product-detail', window.location.origin);
   productUrl.searchParams.set('id', product.id);
   let canonical = document.querySelector('link[rel="canonical"]');
   if (!canonical) {
