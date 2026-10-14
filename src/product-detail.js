@@ -23,9 +23,57 @@ const product = productsData[requestedId] || productsData['ace-lt-6000'];
 // Populate DOM with product data
 function renderProductDetail() {
   // Page Title & Meta
-  document.title = `${product.title} - ${product.tagline} | Ariselux`;
+  const pageTitle = `${product.title} - ${product.tagline} | Ariselux`;
+  document.title = pageTitle;
   const metaDesc = document.getElementById('page-meta-desc');
   if (metaDesc) metaDesc.content = product.description;
+
+  // Keep each product URL independently understandable to search engines.
+  const productUrl = new URL('/product-detail.html', window.location.origin);
+  productUrl.searchParams.set('id', product.id);
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    document.head.appendChild(canonical);
+  }
+  canonical.href = productUrl.href;
+
+  const ogTitle = document.getElementById('page-og-title');
+  if (ogTitle) ogTitle.content = pageTitle;
+  const ogDescription = document.getElementById('page-og-description');
+  if (ogDescription) ogDescription.content = product.description;
+  const ogUrl = document.getElementById('page-og-url');
+  if (ogUrl) ogUrl.content = productUrl.href;
+
+  let productSchema = document.getElementById('product-structured-data');
+  if (!productSchema) {
+    productSchema = document.createElement('script');
+    productSchema.id = 'product-structured-data';
+    productSchema.type = 'application/ld+json';
+    document.head.appendChild(productSchema);
+  }
+  productSchema.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.title,
+    description: product.description,
+    image: (product.gallery?.length ? product.gallery : [product.image]).map(image => (
+      new URL(image, window.location.origin).href
+    )),
+    sku: product.id,
+    category: `Mobile ${product.categoryName || 'Light Tower'}`,
+    brand: {
+      '@type': 'Brand',
+      name: 'Ariselux'
+    },
+    manufacturer: {
+      '@type': 'Organization',
+      name: 'Ariselux Equipments Private Limited',
+      url: 'https://www.ariselux.com/'
+    },
+    url: productUrl.href
+  });
 
   // Breadcrumbs
   const bcCategory = document.getElementById('breadcrumb-category');
