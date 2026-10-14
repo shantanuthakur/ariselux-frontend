@@ -45,7 +45,7 @@ Configure the hosting service with:
 - Output directory: `dist`
 - Environment variable: `VITE_API_URL=<public backend URL>/api`
 
-The build produces five pages: `index.html`, `about.html`, `products.html`, `product-detail.html`, and `contact.html`.
+The build produces six pages: `index.html`, `about.html`, `products.html`, `mobile-light-tower.html`, `product-detail.html`, and `contact.html`.
 
 ## Cloudflare deployment
 
