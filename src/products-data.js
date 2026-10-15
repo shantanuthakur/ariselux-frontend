@@ -1805,10 +1805,10 @@ export const productsData = {
     categoryName: 'Battery Operated',
     tagline: 'Ultra-Compact 5,000 Lumens Portable Light Tower',
     description: 'The ACE B -01 is an ultra-compact single-head portable lithium light tower providing 5,000 lumens from a 50W LED fixture. Delivers 8-9 hours battery backup in an ultra-lightweight 12 kg tactical carry case with 1.0-1.5 meter telescopic mast.',
-    image: '/images/products/Battery oprated/ACE B001 (1).png',
+    image: '/images/products/Battery oprated/ACE B001(2).png',
     gallery: [
-      '/images/products/Battery oprated/ACE B001 (1).png',
       '/images/products/Battery oprated/ACE B001(2).png',
+      '/images/products/Battery oprated/ACE B001 (1).png',
       '/images/products/Battery oprated/ACE B001(3).png'
     ],
     featureImage: '/images/features/features-battery.jpg',
