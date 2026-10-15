@@ -1539,7 +1539,7 @@ export const productsData = {
       '/images/products/Battery oprated/ACE B004(1).png',
       '/images/products/Battery oprated/ACE B004(2).png'
     ],
-    featureImage: '/images/features/features-battery.jpg',
+    featureImage: '/images/features/features-b04.jpg',
     bestFor: [
       {
         title: 'Underground Metro & Tunnel Maintenance (Zero Fumes)',
@@ -1675,7 +1675,7 @@ export const productsData = {
       '/images/products/Battery oprated/ACE B002(1).png',
       '/images/products/Battery oprated/ACE B002(2).png'
     ],
-    featureImage: '/images/features/features-battery.jpg',
+    featureImage: '/images/features/features-b02.jpg',
     bestFor: [
       {
         title: 'Tactical Night Inspection & Emergency Vehicle Breakdown',
@@ -1811,7 +1811,7 @@ export const productsData = {
       '/images/products/Battery oprated/ACE B001 (1).png',
       '/images/products/Battery oprated/ACE B001(3).png'
     ],
-    featureImage: '/images/features/features-battery.jpg',
+    featureImage: '/images/features/features-b01.jpg',
     bestFor: [
       {
         title: 'Rapid Roadside Trench & Water Pipeline Repairs',
