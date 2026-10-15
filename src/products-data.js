@@ -679,11 +679,9 @@ export const productsData = {
     categoryName: 'Petrol Operated',
     tagline: 'Compact Portable Honda-Powered Petrol Light Tower - 4.0M Mast',
     description: 'The ACE PLT 4000 is a lightweight, ultra-portable mobile lighting tower powered by a genuine Honda EP-1000 generator (CPCB Approved, 750VA). Delivering 69,600 lumens from 6 energy-efficient 80W LED floodlights (145 lm/w, IP67) on a 4-meter telescopic anodized aluminum mast with pneumatic and manual raising.',
-    image: '/images/products/Petrol oprated/petrol-angle1.jpeg',
+    image: '/images/products/Petrol oprated/ACE PLT 4000.png',
     gallery: [
-      '/images/products/Petrol oprated/petrol-angle1.jpeg',
-      '/images/products/Petrol oprated/petrol-angle2.jpg',
-      '/images/products/Petrol oprated/petrol-angle3.jpg'
+      '/images/products/Petrol oprated/ACE PLT 4000.png'
     ],
     featureImage: '/images/features/features-petrol.jpg',
     bestFor: [
