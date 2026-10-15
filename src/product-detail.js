@@ -172,8 +172,15 @@ function renderProductDetail() {
   // Main Image & Gallery
   const mainImg = document.getElementById('main-product-img');
   if (mainImg) {
-    mainImg.src = product.image;
     mainImg.alt = product.title;
+    mainImg.style.opacity = '0';
+    mainImg.onload = () => {
+      mainImg.style.opacity = '1';
+    };
+    mainImg.src = product.image;
+    if (mainImg.complete) {
+      mainImg.style.opacity = '1';
+    }
   }
 
   const galleryThumbs = document.getElementById('gallery-thumbs');
@@ -220,7 +227,15 @@ function renderProductDetail() {
   // Features Section
   const featuresImg = document.getElementById('features-img');
   if (featuresImg && product.featureImage) {
+    featuresImg.alt = `${product.title} Features`;
+    featuresImg.style.opacity = '0';
+    featuresImg.onload = () => {
+      featuresImg.style.opacity = '1';
+    };
     featuresImg.src = product.featureImage;
+    if (featuresImg.complete) {
+      featuresImg.style.opacity = '1';
+    }
   }
 
   const featuresList = document.getElementById('features-list');
