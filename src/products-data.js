@@ -181,7 +181,7 @@ export const productsData = {
       '/images/products/Diesel oprated/ACE LT 9000(2).png',
       '/images/products/Diesel oprated/ACE LT 9000(3).png'
     ],
-    featureImage: '/images/features/features-diesel-9000.jpg',
+    featureImage: '/images/features/features-diesel-6000.jpg',
     bestFor: [
       {
         title: 'National Highway & Expressway Night Paving',
