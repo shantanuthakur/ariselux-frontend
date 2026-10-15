@@ -842,7 +842,7 @@ export const productsData = {
       '/images/products/Battery-Petrol Hybrid/PBLT 4000(2).png',
       '/images/products/Battery-Petrol Hybrid/PBLT 4000(3).png'
     ],
-    featureImage: '/images/features/features-petrol.jpg',
+    featureImage: '/images/features/features-hybrid.jpg',
     bestFor: [
       {
         title: 'Fast-Response Highway Paving & Asphalt Repairs',
