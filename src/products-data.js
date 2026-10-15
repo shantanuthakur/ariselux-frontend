@@ -175,11 +175,11 @@ export const productsData = {
     categoryName: 'Diesel Powered',
     tagline: 'High-Efficiency Air-Cooled Diesel Mobile Lighting Tower - 9.0M Mast',
     description: 'The ACE LT 9000 is an industrial-grade mobile lighting tower powered by an air-cooled KD15-441 Kohler engine (8.1 BHP @ 3000 RPM) and Maccalte/NSM 5 kVA brushless alternator. Driving 4 high-power 400W LED floodlights delivering 2,32,000 lumens across 7,000 square meters on a 9.0-meter telescopic mast with 359° rotation.',
-    image: '/images/products/Diesel oprated/ACE LT 9000 -1.png',
+    image: '/images/products/Diesel oprated/ACE LT 9000(1).png',
     gallery: [
-      '/images/products/Diesel oprated/ACE LT 9000 -1.png',
-      '/images/products/Diesel oprated/ACE LT 9000 -2.png',
-      '/images/products/Diesel oprated/ACE LT 9000 -3.png'
+      '/images/products/Diesel oprated/ACE LT 9000(1).png',
+      '/images/products/Diesel oprated/ACE LT 9000(2).png',
+      '/images/products/Diesel oprated/ACE LT 9000(3).png'
     ],
     featureImage: '/images/features/features-diesel-9000.jpg',
     bestFor: [
@@ -349,11 +349,11 @@ export const productsData = {
     categoryName: 'Diesel Powered',
     tagline: 'Reliable 4-Light Diesel Mobile Lighting Tower - 7.0M Mast',
     description: 'The ACE LT 6000 is engineered for continuous night operations on highways, construction jobs, and municipal maintenance. Powered by an air-cooled KD15-441 Kohler engine (8.1 BHP @ 3000 RPM) with Maccalte/NSM 5 kVA brushless alternator and a 40-liter canopy tank, it drives 4 LED floodlights (1600W total) generating 2,32,000 lumens covering up to 5,000 square meters.',
-    image: '/images/products/Diesel oprated/ACE LT 6000 -1.png',
+    image: '/images/products/Diesel oprated/ACE LT 6000(1).png',
     gallery: [
-      '/images/products/Diesel oprated/ACE LT 6000 -1.png',
-      '/images/products/Diesel oprated/ACE LT 6000 -2.png',
-      '/images/products/Diesel oprated/ACE LT 6000 -3.png'
+      '/images/products/Diesel oprated/ACE LT 6000(1).png',
+      '/images/products/Diesel oprated/ACE LT 6000(2).png',
+      '/images/products/Diesel oprated/ACE LT 6000(3).png'
     ],
     featureImage: '/images/features/features-diesel-6000.jpg',
     bestFor: [
@@ -836,11 +836,11 @@ export const productsData = {
     categoryName: 'Battery & Petrol Operated',
     tagline: 'Hybrid Battery & AC Mobile Light Tower - 4.0M Mast',
     description: 'The ACE PBLT 4000 is an advanced portable battery-operated mobile lighting tower delivering 51,000 lumens from 6 x 60W LED luminaires. Powered by a 48V 60Ah battery bank providing up to 12 hours backup, with a 4.0-meter anodized aluminum telescopic mast and 16A AC socket for continuous operation.',
-    image: '/images/products/Petrol oprated/petrol-angle1.jpeg',
+    image: '/images/products/Battery-Petrol Hybrid/PBLT 4000(1).png',
     gallery: [
-      '/images/products/Petrol oprated/petrol-angle1.jpeg',
-      '/images/products/Petrol oprated/petrol-angle2.jpg',
-      '/images/products/Petrol oprated/petrol-angle3.jpg'
+      '/images/products/Battery-Petrol Hybrid/PBLT 4000(1).png',
+      '/images/products/Battery-Petrol Hybrid/PBLT 4000(2).png',
+      '/images/products/Battery-Petrol Hybrid/PBLT 4000(3).png'
     ],
     featureImage: '/images/features/features-petrol.jpg',
     bestFor: [
