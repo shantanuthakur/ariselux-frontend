@@ -1425,7 +1425,7 @@ export const productsData = {
     gallery: [
       '/images/products/Solar Oprated/solar new 1.png',
       '/images/products/Solar Oprated/solar new 2.png',
-      '/images/products/Solar Oprated/solar new 3.png'
+      '/images/products/Solar Oprated/Solar new 3.png'
     ],
     featureImage: '/images/features/features-solar-surveillance.jpg',
     bestFor: [
