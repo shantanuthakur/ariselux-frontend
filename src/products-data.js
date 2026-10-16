@@ -1115,8 +1115,7 @@ export const productsData = {
     description: 'The ACE 5 SLT 6000 is our heavy-duty zero-fuel, zero-emission solar mobile lighting tower equipped with a heavy-duty 5.0 kVA pure sine wave inverter, 4 sliding solar panels (2380W total), 48V MPPT controller, and 7.2 kWh LiFePO4 battery bank powering 4 LED floodlights (87,000 lumens) on a 7.0-meter 359° rotatable mast.',
     image: '/images/products/Solar Oprated/Solar-Powered Light Tower Trailer.png',
     gallery: [
-      '/images/products/Solar Oprated/Solar-Powered Light Tower Trailer.png',
-      '/images/products/Solar Oprated/Mobile Solar Lighting Trailer Product Showcase.png'
+      '/images/products/Solar Oprated/Solar-Powered Light Tower Trailer.png'
     ],
     featureImage: '/images/features/features-solar-5slt.jpg',
     bestFor: [
