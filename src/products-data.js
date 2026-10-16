@@ -998,11 +998,9 @@ export const productsData = {
     categoryName: 'Inflatable Tower',
     tagline: '360° Glare-Free 42,000 Lumens Inflatable Balloon Light Tower',
     description: 'The ACE 1.2 IT 4500 is a revolutionary inflatable column light tower providing 360-degree glare-free diffused illumination across 10,000 square meters. Featuring an onboard 230V 1200VA power system with an 8-liter fuel tank and automatic air blower, the cylinder inflates to 4.5 meters in under 60 seconds.',
-    image: '/images/products/Inflatable tower/inflatable-angle1.jpg',
+    image: '/images/products/Inflatable tower/ACE 1.2 IT 4500.png',
     gallery: [
-      '/images/products/Inflatable tower/inflatable-angle1.jpg',
-      '/images/products/Inflatable tower/inflatable-angle2.jpg',
-      '/images/products/Inflatable tower/inflatable-angle3.png'
+      '/images/products/Inflatable tower/ACE 1.2 IT 4500.png'
     ],
     featureImage: '/images/features/features-inflatable.jpg',
     bestFor: [
