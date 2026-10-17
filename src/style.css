@@ -1183,6 +1183,7 @@ body.nav-open .floating-actions,
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 80px;
 }
 
 .hero-bg {
@@ -1217,9 +1218,11 @@ body.nav-open .floating-actions,
 }
 
 .hero-content .section-label {
-  color: var(--primary);
-  margin-bottom: 25px;
+  color: #38bdf8;
+  margin-bottom: 22px;
   font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
   animation: fadeInUp 0.8s ease 0.2s both;
 }
 
