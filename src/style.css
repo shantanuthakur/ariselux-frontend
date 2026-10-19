@@ -2303,11 +2303,11 @@ img.footer-logo {
 }
 
 .footer-heading {
-  font-size: 13px;
-  font-weight: 800;
+  font-size: 14.5px;
+  font-weight: 700;
   color: var(--white);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  text-transform: none;
+  letter-spacing: 0.3px;
   margin-bottom: 22px;
   position: relative;
   padding-bottom: 10px;
