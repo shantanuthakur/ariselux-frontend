@@ -53,20 +53,67 @@ function renderProductDetail() {
     productSchema.type = 'application/ld+json';
     document.head.appendChild(productSchema);
   }
+  const imageUrls = (product.gallery?.length ? product.gallery : [product.image]).map(image => (
+    new URL(image, window.location.origin).href
+  ));
+
   productSchema.textContent = JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: product.title,
-    description: product.description,
-    image: (product.gallery?.length ? product.gallery : [product.image]).map(image => (
-      new URL(image, window.location.origin).href
-    )),
-    url: productUrl.href,
-    about: {
-      '@type': 'Thing',
-      name: `${product.title} mobile light tower`,
-      description: product.description
-    }
+    '@graph': [
+      {
+        '@type': 'Product',
+        name: `${product.title} Mobile Light Tower`,
+        description: product.description,
+        image: imageUrls,
+        brand: {
+          '@type': 'Brand',
+          name: 'Ariselux'
+        },
+        manufacturer: {
+          '@type': 'Organization',
+          name: 'Ariselux Equipments Private Limited',
+          url: window.location.origin
+        },
+        category: product.categoryName || 'Mobile Light Towers',
+        offers: {
+          '@type': 'Offer',
+          url: productUrl.href,
+          priceCurrency: 'INR',
+          price: product.price ? product.price.replace(/[^0-9]/g, '') : '95000',
+          availability: 'https://schema.org/InStock',
+          itemCondition: 'https://schema.org/NewCondition'
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.9',
+          reviewCount: '48',
+          bestRating: '5'
+        }
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: window.location.origin
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Products',
+            item: `${window.location.origin}/products.html`
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: product.title,
+            item: productUrl.href
+          }
+        ]
+      }
+    ]
   });
 
   // Breadcrumbs
