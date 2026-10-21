@@ -23,10 +23,21 @@ const product = productsData[requestedId] || productsData['ace-lt-6000'];
 // Populate DOM with product data
 function renderProductDetail() {
   // Page Title & Meta
-  const pageTitle = `${product.title} - ${product.tagline} | Ariselux`;
+  const catLabel = product.categoryName ? `${product.categoryName} Mobile Light Tower` : 'Mobile Light Tower';
+  const pageTitle = `${product.title} ${catLabel} | Ariselux Manufacturer India`;
   document.title = pageTitle;
   const metaDesc = document.getElementById('page-meta-desc');
-  if (metaDesc) metaDesc.content = product.description;
+  if (metaDesc) {
+    metaDesc.content = `${product.title} (${catLabel}) manufactured in India by Ariselux. ${product.description}`;
+  }
+
+  let metaKeywords = document.querySelector('meta[name="keywords"]');
+  if (!metaKeywords) {
+    metaKeywords = document.createElement('meta');
+    metaKeywords.name = 'keywords';
+    document.head.appendChild(metaKeywords);
+  }
+  metaKeywords.content = `${product.title}, ${product.title} light tower, ${product.categoryName} mobile light tower, battery operated mobile light tower, mobile light tower manufacturer, mobile light tower manufacturer in india, ariselux`;
 
   // Keep each product URL independently understandable to search engines.
   const productUrl = new URL('/product-detail', window.location.origin);
@@ -42,7 +53,7 @@ function renderProductDetail() {
   const ogTitle = document.getElementById('page-og-title');
   if (ogTitle) ogTitle.content = pageTitle;
   const ogDescription = document.getElementById('page-og-description');
-  if (ogDescription) ogDescription.content = product.description;
+  if (ogDescription) ogDescription.content = `${product.title} (${catLabel}) - ${product.description}`;
   const ogUrl = document.getElementById('page-og-url');
   if (ogUrl) ogUrl.content = productUrl.href;
 
@@ -62,7 +73,7 @@ function renderProductDetail() {
     '@graph': [
       {
         '@type': 'Product',
-        name: `${product.title} Mobile Light Tower`,
+        name: `${product.title} ${catLabel}`,
         description: product.description,
         image: imageUrls,
         brand: {
@@ -75,6 +86,7 @@ function renderProductDetail() {
           url: window.location.origin
         },
         category: product.categoryName || 'Mobile Light Towers',
+        keywords: `${product.title}, mobile light tower, ${product.categoryName} mobile light tower, mobile light tower manufacturer, battery operated light tower`,
         offers: {
           '@type': 'Offer',
           url: productUrl.href,
