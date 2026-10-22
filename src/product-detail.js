@@ -68,6 +68,7 @@ function renderProductDetail() {
     new URL(image, window.location.origin).href
   ));
 
+  if (product.price) {
   const productMarkup = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -109,6 +110,10 @@ function renderProductDetail() {
   }
 
   productSchema.textContent = JSON.stringify(productMarkup);
+  } else {
+    // Quote-only products have no public price, so do not publish an invalid Offer.
+    productSchema.remove();
+  }
 
   let breadcrumbSchema = document.getElementById('breadcrumb-structured-data');
   if (!breadcrumbSchema) {
