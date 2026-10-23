@@ -3,13 +3,19 @@
    Full Interactive Functionality
    ============================================ */
 
-// ariselux.com is a static Worker site, so it does not proxy /api requests.
-// Use the API Worker unless a local/deployment environment overrides it.
-let rawApiUrl = (import.meta.env.VITE_API_URL || 'https://ariselux-backend.sales3-a0c.workers.dev/api').replace(/\/+$/, '');
-if (rawApiUrl.includes(':5001')) {
-  rawApiUrl = rawApiUrl.replace(':5001', ':5000');
+// ariselux.com is a static Worker site, so it does not proxy /api requests in production.
+// Automatically target local backend (port 5000) when running on localhost.
+function resolveApiBaseUrl() {
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    return 'http://localhost:5000/api';
+  }
+  let raw = (import.meta.env.VITE_API_URL || 'https://ariselux-backend.sales3-a0c.workers.dev/api').replace(/\/+$/, '');
+  if (raw.includes(':5001')) {
+    raw = raw.replace(':5001', ':5000');
+  }
+  return raw;
 }
-const API_BASE_URL = rawApiUrl;
+const API_BASE_URL = resolveApiBaseUrl();
 
 function apiUrl(path) {
   return `${API_BASE_URL}/${String(path).replace(/^\/+/, '')}`;
