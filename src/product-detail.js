@@ -490,12 +490,12 @@ if (quoteForm) {
           }
           const waBtn = document.getElementById('detail-quote-wa-btn');
           if (waBtn) {
-            waBtn.href = data.whatsappDirectUrl || `https://wa.me/918126732502?text=${encodeURIComponent(`Hello Ariselux Team, I requested quotation Ref #${quoteId} for ${payload.product}`)}`;
+            waBtn.href = data.whatsappDirectUrl || `https://wa.me/918923730881?text=${encodeURIComponent(`Hello Ariselux Team, I requested quotation Ref #${quoteId} for ${payload.product}`)}`;
           }
         }
         quoteForm.reset();
       } else {
-        alert(data.message || 'There was an issue submitting your quotation request. Please WhatsApp us directly at +91-8126732502.');
+        alert(data.message || 'There was an issue submitting your quotation request. Please WhatsApp us directly at +91 89237 30881.');
       }
     } catch (err) {
       console.warn('Quotation fallback:', err);
@@ -506,7 +506,7 @@ if (quoteForm) {
         const badge = document.getElementById('detail-quote-ref-badge');
         if (badge) badge.textContent = `Instant WhatsApp Connect`;
         const waBtn = document.getElementById('detail-quote-wa-btn');
-        if (waBtn) waBtn.href = `https://wa.me/918126732502?text=${waText}`;
+        if (waBtn) waBtn.href = `https://wa.me/918923730881?text=${waText}`;
       }
       quoteForm.reset();
     } finally {
@@ -594,12 +594,12 @@ if (enqForm) {
           }
           const waBtn = document.getElementById('detail-enquiry-wa-btn');
           if (waBtn) {
-            waBtn.href = data.whatsappDirectUrl || `https://wa.me/918126732502?text=${encodeURIComponent(`Hello Ariselux Engineering Desk, I submitted Enquiry Ref #${enqId} for ${payload.product}`)}`;
+            waBtn.href = data.whatsappDirectUrl || `https://wa.me/918923730881?text=${encodeURIComponent(`Hello Ariselux Engineering Desk, I submitted Enquiry Ref #${enqId} for ${payload.product}`)}`;
           }
         }
         enqForm.reset();
       } else {
-        alert(data.message || 'There was an issue submitting your enquiry. Please WhatsApp us directly at +91-8126732502.');
+        alert(data.message || 'There was an issue submitting your enquiry. Please WhatsApp us directly at +91 89237 30881.');
       }
     } catch (err) {
       console.warn('Enquiry fallback:', err);
@@ -610,7 +610,7 @@ if (enqForm) {
         const badge = document.getElementById('detail-enquiry-ref-badge');
         if (badge) badge.textContent = `Instant WhatsApp Connect`;
         const waBtn = document.getElementById('detail-enquiry-wa-btn');
-        if (waBtn) waBtn.href = `https://wa.me/918126732502?text=${waText}`;
+        if (waBtn) waBtn.href = `https://wa.me/918923730881?text=${waText}`;
       }
       enqForm.reset();
     } finally {

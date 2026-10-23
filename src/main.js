@@ -338,17 +338,17 @@ function initContactForm() {
           const enqId = data.enquiry ? data.enquiry.id : 'Recorded';
           const msg = `Thank you, ${payload.name}!\n\nYour technical enquiry (#${enqId}) has been received by our sales engineering desk at Roorkee Works.\n\nWe will connect via ${payload.preferredChannel} within 2-4 business hours.\n\nWould you like to open WhatsApp now to chat with our engineering desk?`;
           if (confirm(msg)) {
-            window.open(data.whatsappDirectUrl || `https://wa.me/918126732502?text=${encodeURIComponent(`Hello Ariselux Team, I submitted an enquiry (Ref #${enqId}):\n*Name:* ${payload.name}\n*Product:* ${payload.product}\n*Phone:* ${payload.phone}\n*Query:* ${payload.message}`)}`, '_blank');
+            window.open(data.whatsappDirectUrl || `https://wa.me/918923730881?text=${encodeURIComponent(`Hello Ariselux Team, I submitted an enquiry (Ref #${enqId}):\n*Name:* ${payload.name}\n*Product:* ${payload.product}\n*Phone:* ${payload.phone}\n*Query:* ${payload.message}`)}`, '_blank');
           }
           enqForm.reset();
         } else {
-          alert(data.message || 'There was an issue submitting your enquiry. Please WhatsApp us at +91-8126732502.');
+          alert(data.message || 'There was an issue submitting your enquiry. Please WhatsApp us at +91 89237 30881.');
         }
       } catch (err) {
         console.warn('Enquiry fallback:', err);
         const waText = encodeURIComponent(`Hello Ariselux Team, I want to enquire:\n*Name:* ${payload.name}\n*Product:* ${payload.product}\n*Phone:* ${payload.phone}\n*Company:* ${payload.company}\n*Query:* ${payload.message}`);
         if (confirm('Enquiry recorded locally. Would you like to chat with Ariselux sales desk on WhatsApp right now?')) {
-          window.open(`https://wa.me/918126732502?text=${waText}`, '_blank');
+          window.open(`https://wa.me/918923730881?text=${waText}`, '_blank');
         }
         enqForm.reset();
       } finally {
@@ -418,17 +418,17 @@ function initContactForm() {
           const quoteId = data.quotation ? data.quotation.id : 'Recorded';
           const msg = `Thank you, ${payload.name}!\n\nYour commercial quotation request for "${payload.product}" (Ref #${quoteId}) has been received at Roorkee Works.\n\nWe will share your formal quotation within 2-4 business hours.\n\nWould you like to connect directly on WhatsApp with our sales desk right now?`;
           if (confirm(msg)) {
-            window.open(data.whatsappDirectUrl || `https://wa.me/918126732502?text=${encodeURIComponent(`Hello Ariselux Team, I requested quotation Ref #${quoteId} for ${payload.product}`)}`, '_blank');
+            window.open(data.whatsappDirectUrl || `https://wa.me/918923730881?text=${encodeURIComponent(`Hello Ariselux Team, I requested quotation Ref #${quoteId} for ${payload.product}`)}`, '_blank');
           }
           quoteForm.reset();
         } else {
-          alert(data.message || 'There was an issue submitting your quotation request. Please WhatsApp us at +91-8126732502.');
+          alert(data.message || 'There was an issue submitting your quotation request. Please WhatsApp us at +91 89237 30881.');
         }
       } catch (err) {
         console.warn('Quotation fallback:', err);
         const waText = encodeURIComponent(`Hello Ariselux Sales Desk, I requested a quote:\n*Product:* ${payload.product}\n*Quantity:* ${payload.quantity}\n*Buyer:* ${payload.name} (${payload.company})\n*Phone:* ${payload.phone}`);
         if (confirm('Quotation recorded locally. Would you like to connect directly on WhatsApp with our sales desk right now?')) {
-          window.open(`https://wa.me/918126732502?text=${waText}`, '_blank');
+          window.open(`https://wa.me/918923730881?text=${waText}`, '_blank');
         }
         quoteForm.reset();
       } finally {
@@ -817,12 +817,12 @@ function initRequestForQuotation() {
           if (waBtn) {
             const waNotes = specifications || 'Official quotation requested.';
             const waText = encodeURIComponent(`Hello Ariselux Sales Desk, I requested Quotation Ref #${quoteId}:\n*Product:* ${product}\n*Quantity:* ${quantity}\n*Timeline:* ${deliveryTimeline}\n*Site:* ${deliveryLocation}\n*Company:* ${company}\n*Buyer:* ${name} (${phone})\n*Notes:* ${waNotes}`);
-            waBtn.href = data.whatsappDirectUrl || `https://wa.me/918126732502?text=${waText}`;
+            waBtn.href = data.whatsappDirectUrl || `https://wa.me/918923730881?text=${waText}`;
           }
 
           rfqForm.reset();
         } else {
-          alert(data.message || 'There was an issue submitting your quotation request. Please WhatsApp us directly at +91-8126732502.');
+          alert(data.message || 'There was an issue submitting your quotation request. Please WhatsApp us directly at +91 89237 30881.');
         }
       } catch (err) {
         console.warn('RFQ API submission fallback:', err);
@@ -843,7 +843,7 @@ function initRequestForQuotation() {
 
         const waBtn = document.getElementById('rfq-wa-direct-btn');
         if (waBtn) {
-          waBtn.href = `https://wa.me/918126732502?text=${waText}`;
+          waBtn.href = `https://wa.me/918923730881?text=${waText}`;
         }
 
         rfqForm.reset();
@@ -1000,7 +1000,7 @@ function initEnquiryModal() {
 
             <div class="rfq-trust-footer" style="margin-top: 14px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1b5faa" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <span>Direct Factory Desk: +91-8126732502 • Response within 2-4 business hours • Roorkee Works</span>
+              <span>Direct Factory Desk: +91 89237 30881 • Response within 2-4 business hours • Roorkee Works</span>
             </div>
           </form>
 
@@ -1180,12 +1180,12 @@ function initEnquiryModal() {
           const waBtn = document.getElementById('enquiry-wa-direct-btn');
           if (waBtn) {
             const waText = encodeURIComponent(`Hello Ariselux Enquiry Desk, I submitted an enquiry (Ref #${enqId}):\n*Name:* ${name}\n*Nature:* ${enquiryType}\n*Product:* ${product}\n*Phone:* ${phone}\n*Query:* ${userMessage}`);
-            waBtn.href = data.whatsappDirectUrl || `https://wa.me/918126732502?text=${waText}`;
+            waBtn.href = data.whatsappDirectUrl || `https://wa.me/918923730881?text=${waText}`;
           }
 
           enquiryForm.reset();
         } else {
-          alert(data.message || 'There was an issue submitting your enquiry. Please WhatsApp us directly at +91-8126732502.');
+          alert(data.message || 'There was an issue submitting your enquiry. Please WhatsApp us directly at +91 89237 30881.');
         }
       } catch (err) {
         console.warn('Enquiry submission error fallback:', err);
@@ -1203,7 +1203,7 @@ function initEnquiryModal() {
 
         const waBtn = document.getElementById('enquiry-wa-direct-btn');
         if (waBtn) {
-          waBtn.href = `https://wa.me/918126732502?text=${waText}`;
+          waBtn.href = `https://wa.me/918923730881?text=${waText}`;
         }
         enquiryForm.reset();
       } finally {
