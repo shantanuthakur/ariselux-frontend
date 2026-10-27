@@ -409,7 +409,7 @@ function renderPricingSystem(product) {
     totalPrice: 472000,
     formattedTotalPrice: '₹ 4,72,000',
     unit: 'Ex-Works Roorkee Plant',
-    hsnCode: '85131090',
+    hsnCode: '94054090',
     leadTime: 'Ready Stock Roorkee',
     warranty: '12 Months Comprehensive Onsite Warranty'
   };
@@ -428,7 +428,7 @@ function renderPricingSystem(product) {
       </div>
       <div class="hero-price-right">
         <span class="hero-price-badge-itc">✓ 18% GST ITC Eligible</span>
-        <span class="hero-price-hsn">HSN Code: ${pricing.hsnCode || '85131090'}</span>
+        <span class="hero-price-hsn">HSN Code: ${pricing.hsnCode || '94054090'}</span>
       </div>
     `;
   }
@@ -554,7 +554,7 @@ function renderPricingSystem(product) {
         <div class="pricing-spec-icon">📜</div>
         <div class="pricing-spec-meta">
           <h4>HSN Code &amp; Tax Credit</h4>
-          <p>HSN ${pricing.hsnCode || '85131090'} | Full 18% GST Input Tax Credit (ITC)</p>
+          <p>HSN ${pricing.hsnCode || '94054090'} | Full 18% GST Input Tax Credit (ITC)</p>
         </div>
       </div>
       <div class="pricing-spec-item">
