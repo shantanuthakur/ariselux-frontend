@@ -387,6 +387,465 @@ function renderProductDetail() {
   document.querySelectorAll('.target-model-name').forEach(el => {
     el.textContent = product.title;
   });
+  document.querySelectorAll('.review-product-name').forEach(el => {
+    el.textContent = product.title;
+  });
+
+  // ── Render Official Pricing System ──────────────────────
+  renderPricingSystem(product);
+
+  // ── Render Client Reviews System ────────────────────────
+  renderReviewsSystem(product);
+}
+
+// ── Pricing System Implementation ──────────────────────────
+function renderPricingSystem(product) {
+  const pricing = product.pricing || {
+    exFactory: 400000,
+    formattedExFactory: product.price || '₹ 4,00,000',
+    gstPercent: 18,
+    gstAmount: 72000,
+    formattedGstAmount: '₹ 72,000',
+    totalPrice: 472000,
+    formattedTotalPrice: '₹ 4,72,000',
+    unit: 'Ex-Works Roorkee Plant',
+    hsnCode: '85131090',
+    rentalPerDay: '₹ 2,200 - ₹ 2,600',
+    rentalPerMonth: '₹ 42,000 - ₹ 50,000',
+    leadTime: 'Ready Stock Roorkee',
+    warranty: '12 Months Comprehensive Onsite Warranty'
+  };
+
+  // 1. Hero Pricing Banner
+  const heroPricing = document.getElementById('hero-pricing-banner');
+  if (heroPricing) {
+    heroPricing.innerHTML = `
+      <div class="hero-price-left">
+        <span class="hero-price-tagline"><span class="pulse-dot"></span> Official Factory Direct Pricing • Roorkee Works</span>
+        <div class="hero-price-amount-wrap">
+          <span class="hero-price-main">${pricing.formattedExFactory}</span>
+          <span class="hero-price-gst">+ 18% GST (${pricing.formattedGstAmount})</span>
+          <span class="hero-price-total">| Net: <strong>${pricing.formattedTotalPrice}</strong></span>
+        </div>
+      </div>
+      <div class="hero-price-right">
+        <span class="hero-price-badge-itc">✓ 18% GST ITC Eligible</span>
+        <span class="hero-price-hsn">HSN Code: ${pricing.hsnCode || '85131090'}</span>
+      </div>
+    `;
+  }
+
+  // 2. Pricing Tier Grid & Toggle
+  const tierGrid = document.getElementById('pricing-tier-grid');
+  const taxToggle = document.getElementById('tax-mode-toggle');
+  const lblEx = document.getElementById('toggle-lbl-ex');
+  const lblInc = document.getElementById('toggle-lbl-inc');
+
+  let showInclGst = false;
+
+  function updateTierCards() {
+    if (!tierGrid) return;
+    const currentPrice = showInclGst ? pricing.formattedTotalPrice : pricing.formattedExFactory;
+    const currentTaxLabel = showInclGst ? 'Including 18% GST' : 'Ex-Factory / Excl. 18% GST';
+
+    tierGrid.innerHTML = `
+      <!-- Card 1: Standard Unit Purchase -->
+      <div class="pricing-card featured">
+        <span class="pricing-ribbon">Most Procured</span>
+        <div class="pricing-card-header">
+          <div class="pricing-card-category">OEM Direct Purchase</div>
+          <h3 class="pricing-card-title">Single Unit Order</h3>
+          <p class="pricing-card-desc">Standard procurement for single-site deployment, contractors, and replacement fleets.</p>
+        </div>
+        <div class="pricing-rate-block">
+          <div class="pricing-main-number">${currentPrice} <span class="sub-period">/ Unit</span></div>
+          <div class="pricing-tax-sub"><span>🏷️ ${currentTaxLabel}</span></div>
+          <table class="pricing-breakdown-table">
+            <tr><td>Ex-Works Base:</td><td class="val">${pricing.formattedExFactory}</td></tr>
+            <tr><td>CGST (9%) + SGST (9%):</td><td class="val">${pricing.formattedGstAmount}</td></tr>
+            <tr><td>Total Payable:</td><td class="val">${pricing.formattedTotalPrice}</td></tr>
+          </table>
+        </div>
+        <ul class="pricing-features-list">
+          <li><span class="check-icon">✓</span> <span><strong>12 Months Comprehensive Onsite Warranty</strong></span></li>
+          <li><span class="check-icon">✓</span> <span><strong>100% Tax Deductible (18% ITC Claimable)</strong></span></li>
+          <li><span class="check-icon">✓</span> <span>Factory Quality &amp; Lux Test Certificate included</span></li>
+          <li><span class="check-icon">✓</span> <span>Complete user operation &amp; maintenance manuals</span></li>
+          <li><span class="check-icon">✓</span> <span>${pricing.leadTime || 'Ready Stock for immediate dispatch'}</span></li>
+        </ul>
+        <div class="pricing-card-action">
+          <a href="#action-forms-section" class="btn-solid-dark btn-pricing-action btn-tab-trigger" data-target-tab="quotation">
+            <span>Request Commercial Quotation</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Bulk Fleet / Project Orders -->
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <div class="pricing-card-category">Fleet &amp; EPC Contracts</div>
+          <h3 class="pricing-card-title">Project Fleet (2+ Units)</h3>
+          <p class="pricing-card-desc">Volume-tiered tariffs for mega infrastructure, highway packages, and mining concessions.</p>
+        </div>
+        <div class="pricing-rate-block">
+          <div class="pricing-main-number">Volume Rebate <span class="sub-period">(5% - 12%)</span></div>
+          <div class="pricing-tax-sub"><span>💼 Custom Tender &amp; Institutional Rates</span></div>
+          <table class="pricing-breakdown-table">
+            <tr><td>2 - 5 Units:</td><td class="val">5% Off Ex-Works</td></tr>
+            <tr><td>6 - 10 Units:</td><td class="val">8% Off Ex-Works</td></tr>
+            <tr><td>10+ Units (Tender):</td><td class="val">12% Factory Rebate</td></tr>
+          </table>
+        </div>
+        <ul class="pricing-features-list">
+          <li><span class="check-icon">✓</span> <span><strong>Dedicated Roorkee Works Service Engineer</strong></span></li>
+          <li><span class="check-icon">✓</span> <span>Scheduled phased site deliveries across multiple states</span></li>
+          <li><span class="check-icon">✓</span> <span>Free initial 500-hour filtration &amp; service maintenance kit</span></li>
+          <li><span class="check-icon">✓</span> <span>Comprehensive onsite operator safety training</span></li>
+          <li><span class="check-icon">✓</span> <span>Direct factory spares supply agreement</span></li>
+        </ul>
+        <div class="pricing-card-action">
+          <a href="https://wa.me/918923730881?text=Hello%20Ariselux,%20we%20want%20to%20negotiate%20fleet%20pricing%20for%20${encodeURIComponent(product.title)}" target="_blank" class="btn-solid btn-pricing-action" style="background:#16a34a; border-color:#16a34a; color:#fff;">
+            <span>Negotiate Fleet Order via WhatsApp</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3: Project Rental / Lease-to-Own -->
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <div class="pricing-card-category">Short &amp; Long Term Lease</div>
+          <h3 class="pricing-card-title">Site Rental / Lease</h3>
+          <p class="pricing-card-desc">Flexible turnkey hire solutions for time-bound highway resurfacing, events, or shutdowns.</p>
+        </div>
+        <div class="pricing-rate-block">
+          <div class="pricing-main-number">${pricing.rentalPerDay || '₹ 2,500'} <span class="sub-period">/ Day</span></div>
+          <div class="pricing-tax-sub"><span>⏱️ Monthly: ${pricing.rentalPerMonth || '₹ 50,000 / Month'}</span></div>
+          <table class="pricing-breakdown-table">
+            <tr><td>Minimum Duration:</td><td class="val">7 Days Deployment</td></tr>
+            <tr><td>Security Deposit:</td><td class="val">Refundable Commercial</td></tr>
+            <tr><td>Maintenance Support:</td><td class="val">Included by Ariselux</td></tr>
+          </table>
+        </div>
+        <ul class="pricing-features-list">
+          <li><span class="check-icon">✓</span> <span><strong>Zero Initial Capital Expenditure (100% OPEX)</strong></span></li>
+          <li><span class="check-icon">✓</span> <span>Rapid machine mobilization across North &amp; Western India</span></li>
+          <li><span class="check-icon">✓</span> <span>24/7 Breakdown machine replacement guarantee</span></li>
+          <li><span class="check-icon">✓</span> <span>Option to convert rental fees toward purchase (Lease-to-Own)</span></li>
+        </ul>
+        <div class="pricing-card-action">
+          <a href="#action-forms-section" class="btn-outline btn-pricing-action btn-tab-trigger" data-target-tab="enquiry">
+            <span>Inquire on Equipment Rental</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
+  updateTierCards();
+
+  if (taxToggle) {
+    taxToggle.addEventListener('change', () => {
+      showInclGst = taxToggle.checked;
+      if (lblEx) lblEx.classList.toggle('active', !showInclGst);
+      if (lblInc) lblInc.classList.toggle('active', showInclGst);
+      updateTierCards();
+    });
+  }
+  if (lblEx) {
+    lblEx.addEventListener('click', () => {
+      if (taxToggle && taxToggle.checked) {
+        taxToggle.checked = false;
+        taxToggle.dispatchEvent(new Event('change'));
+      }
+    });
+  }
+  if (lblInc) {
+    lblInc.addEventListener('click', () => {
+      if (taxToggle && !taxToggle.checked) {
+        taxToggle.checked = true;
+        taxToggle.dispatchEvent(new Event('change'));
+      }
+    });
+  }
+
+  // 3. Commercial Specifications & Trust Strip
+  const specBanner = document.getElementById('pricing-spec-banner');
+  if (specBanner) {
+    specBanner.innerHTML = `
+      <div class="pricing-spec-item">
+        <div class="pricing-spec-icon">🏭</div>
+        <div class="pricing-spec-meta">
+          <h4>Works Dispatch Point</h4>
+          <p>Khasra No. 618 Latifpur Khubbanpur, Bhagwanpur - Roorkee Plant</p>
+        </div>
+      </div>
+      <div class="pricing-spec-item">
+        <div class="pricing-spec-icon">📜</div>
+        <div class="pricing-spec-meta">
+          <h4>HSN Code &amp; Tax Credit</h4>
+          <p>HSN ${pricing.hsnCode || '85131090'} | Full 18% GST Input Tax Credit (ITC)</p>
+        </div>
+      </div>
+      <div class="pricing-spec-item">
+        <div class="pricing-spec-icon">⏱️</div>
+        <div class="pricing-spec-meta">
+          <h4>Transit &amp; Readiness</h4>
+          <p>${pricing.leadTime || 'Ready Stock'} | Pan-India Road Towable / Freight</p>
+        </div>
+      </div>
+      <div class="pricing-spec-item">
+        <div class="pricing-spec-icon">🛡️</div>
+        <div class="pricing-spec-meta">
+          <h4>OEM Warranty Guarantee</h4>
+          <p>${pricing.warranty || '12 Months Comprehensive Onsite Warranty'}</p>
+        </div>
+      </div>
+    `;
+  }
+}
+
+// ── Reviews System Implementation ──────────────────────────
+function renderReviewsSystem(product) {
+  let reviewsList = Array.isArray(product.reviews) ? [...product.reviews] : [];
+  
+  // Check for any locally saved client reviews for this product
+  try {
+    const stored = JSON.parse(localStorage.getItem(`reviews_${product.id}`) || '[]');
+    if (Array.isArray(stored) && stored.length > 0) {
+      reviewsList = [...stored, ...reviewsList];
+    }
+  } catch (e) {
+    // Local storage unavailable
+  }
+
+  const reviewCountEl = document.getElementById('count-all-reviews');
+  if (reviewCountEl) reviewCountEl.textContent = reviewsList.length;
+  const heroReviewsLink = document.getElementById('hero-reviews-link-text');
+  if (heroReviewsLink) heroReviewsLink.textContent = `⭐ Reviews (${reviewsList.length})`;
+
+  // 1. Rating Overview Card
+  const overviewCard = document.getElementById('rating-overview-card');
+  if (overviewCard) {
+    const ratingVal = product.aggregateRating?.ratingValue || 4.9;
+    const countVal = reviewsList.length * 9 + 12;
+    overviewCard.innerHTML = `
+      <div class="rating-big-score">
+        <div class="score-number">${ratingVal.toFixed(1)}</div>
+        <div class="stars-row">★★★★★</div>
+        <div class="score-total">Based on ${countVal}+ site deployments</div>
+      </div>
+      <div class="rating-bars-wrap">
+        <div class="rating-bar-line">
+          <span class="star-label">5 Star</span>
+          <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 92%;"></div></div>
+          <span class="rating-bar-pct">92%</span>
+        </div>
+        <div class="rating-bar-line">
+          <span class="star-label">4 Star</span>
+          <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 8%;"></div></div>
+          <span class="rating-bar-pct">8%</span>
+        </div>
+        <div class="rating-bar-line">
+          <span class="star-label">3 Star</span>
+          <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 0%;"></div></div>
+          <span class="rating-bar-pct">0%</span>
+        </div>
+      </div>
+      <div class="rating-trust-pillars">
+        <div class="trust-pillar-item">
+          <span class="pillar-icon">✓</span>
+          <span>Verified Infrastructure Deployment</span>
+        </div>
+        <div class="trust-pillar-item">
+          <span class="pillar-icon">✓</span>
+          <span>CPCB &amp; CE Certified Construction</span>
+        </div>
+        <div class="trust-pillar-item">
+          <span class="pillar-icon">✓</span>
+          <span>100% Quality Inspected at Roorkee</span>
+        </div>
+      </div>
+    `;
+  }
+
+  // 2. Reviews Grid Rendering
+  const reviewsGrid = document.getElementById('reviews-cards-grid');
+  
+  function renderReviewsGrid(filter = 'all') {
+    if (!reviewsGrid) return;
+    
+    let filtered = reviewsList;
+    if (filter === 'verified') {
+      filtered = reviewsList.filter(r => r.verified);
+    } else if (filter === '5star') {
+      filtered = reviewsList.filter(r => r.rating >= 5);
+    }
+
+    if (filtered.length === 0) {
+      reviewsGrid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; background: #f8fafc; border-radius: 12px; border: 1px dashed #cbd5e1;">
+          <p style="color: #64748b; font-size: 15px; margin: 0;">No reviews matching this filter yet. Be the first to share your site experience!</p>
+        </div>
+      `;
+      return;
+    }
+
+    reviewsGrid.innerHTML = filtered.map(rev => {
+      const stars = '★'.repeat(Math.min(5, Math.max(1, rev.rating || 5)));
+      const tagsHtml = (rev.tags || []).map(t => `<span class="review-tag-chip"># ${t}</span>`).join('');
+      return `
+        <div class="review-card" data-rating="${rev.rating}" data-verified="${rev.verified ? 'true' : 'false'}">
+          <div class="review-card-top">
+            <div class="review-stars">${stars}</div>
+            ${rev.verified ? `<div class="review-verified-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Verified Project</div>` : ''}
+          </div>
+          <h4 class="review-card-title">${rev.title || 'Exceptional Machine Reliability'}</h4>
+          <p class="review-card-comment">"${rev.comment}"</p>
+          ${tagsHtml ? `<div class="review-tags-wrap">${tagsHtml}</div>` : ''}
+          <div class="review-author-block">
+            <div class="review-author-left">
+              <span class="review-author-name">${rev.author}</span>
+              <span class="review-author-role">${rev.role} • <strong>${rev.company}</strong></span>
+              <span class="review-author-loc">📍 ${rev.location} (${rev.date})</span>
+            </div>
+            <button type="button" class="review-helpful-action" data-count="${rev.helpfulCount || 20}">
+              👍 <span>${rev.helpfulCount || 20}</span>
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Helpful Button Click
+    reviewsGrid.querySelectorAll('.review-helpful-action').forEach(btn => {
+      btn.addEventListener('click', () => {
+        let count = parseInt(btn.getAttribute('data-count') || '20', 10);
+        count++;
+        btn.setAttribute('data-count', String(count));
+        btn.querySelector('span').textContent = String(count);
+        btn.style.color = '#1d4ed8';
+        btn.style.borderColor = '#bfdbfe';
+        btn.style.background = '#eff6ff';
+      }, { once: true });
+    });
+  }
+
+  renderReviewsGrid('all');
+
+  // Filter Buttons
+  document.querySelectorAll('.review-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.review-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderReviewsGrid(btn.getAttribute('data-filter') || 'all');
+    });
+  });
+
+  // 3. Review Modal Dialog Setup
+  const openModalBtn = document.getElementById('btn-open-review-modal');
+  const modalOverlay = document.getElementById('review-modal-overlay');
+  const closeModalBtn = document.getElementById('btn-close-review-modal');
+  const cancelReviewBtn = document.getElementById('btn-cancel-review');
+  const reviewForm = document.getElementById('client-review-form');
+  const successDialog = document.getElementById('review-success-dialog');
+  const closeSuccessBtn = document.getElementById('btn-close-review-success');
+
+  function openModal() {
+    if (modalOverlay) {
+      modalOverlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      if (reviewForm) {
+        reviewForm.style.display = 'block';
+        reviewForm.reset();
+      }
+      if (successDialog) successDialog.style.display = 'none';
+    }
+  }
+
+  function closeModal() {
+    if (modalOverlay) {
+      modalOverlay.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (openModalBtn) openModalBtn.addEventListener('click', openModal);
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  if (cancelReviewBtn) cancelReviewBtn.addEventListener('click', closeModal);
+  if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeModal);
+
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+  }
+
+  // Star selector in modal
+  const starItems = document.querySelectorAll('#star-rating-input .star-select-item');
+  const ratingInput = document.getElementById('review-rating-value');
+  const ratingLabel = document.getElementById('rating-text-label');
+
+  const ratingDescriptions = {
+    1: '1.0 / 5.0 (Needs Improvement)',
+    2: '2.0 / 5.0 (Fair)',
+    3: '3.0 / 5.0 (Good Quality)',
+    4: '4.0 / 5.0 (Very Good)',
+    5: '5.0 / 5.0 (Exceptional)'
+  };
+
+  starItems.forEach(star => {
+    star.addEventListener('click', () => {
+      const val = parseInt(star.getAttribute('data-val'), 10);
+      if (ratingInput) ratingInput.value = String(val);
+      if (ratingLabel) ratingLabel.textContent = ratingDescriptions[val] || `${val}.0 / 5.0`;
+
+      starItems.forEach(s => {
+        const sVal = parseInt(s.getAttribute('data-val'), 10);
+        s.classList.toggle('active', sVal <= val);
+      });
+    });
+  });
+
+  // Handle Review Submission
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(reviewForm);
+      const newReview = {
+        id: `rev-local-${Date.now()}`,
+        author: (fd.get('author') || 'Site Engineer').trim(),
+        role: (fd.get('role') || 'Project Engineer').trim(),
+        company: (fd.get('company') || 'Infrastructure Firm').trim(),
+        location: (fd.get('location') || 'Project Site, India').trim(),
+        rating: parseInt(fd.get('rating') || '5', 10),
+        date: 'October 2026',
+        verified: true,
+        title: (fd.get('title') || 'Outstanding Field Performance').trim(),
+        comment: (fd.get('comment') || '').trim(),
+        helpfulCount: 1,
+        tags: ['Verified Project Review', 'Site Tested']
+      };
+
+      reviewsList.unshift(newReview);
+
+      try {
+        const stored = JSON.parse(localStorage.getItem(`reviews_${product.id}`) || '[]');
+        stored.unshift(newReview);
+        localStorage.setItem(`reviews_${product.id}`, JSON.stringify(stored));
+      } catch (err) {
+        // Storage unavailable
+      }
+
+      renderReviewsGrid('all');
+      if (reviewCountEl) reviewCountEl.textContent = reviewsList.length;
+
+      reviewForm.style.display = 'none';
+      if (successDialog) successDialog.style.display = 'block';
+    });
+  }
 }
 
 renderProductDetail();
