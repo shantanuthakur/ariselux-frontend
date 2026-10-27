@@ -335,6 +335,9 @@ function initContactForm() {
         const data = await response.json();
 
         if (response.ok && data.success) {
+          if (typeof window.gtagSendEvent === 'function') {
+            window.gtagSendEvent();
+          }
           const enqId = data.enquiry ? data.enquiry.id : 'Recorded';
           const msg = `Thank you, ${payload.name}!\n\nYour technical enquiry (#${enqId}) has been received by our sales engineering desk at Roorkee Works.\n\nWe will connect via ${payload.preferredChannel} within 2-4 business hours.\n\nWould you like to open WhatsApp now to chat with our engineering desk?`;
           if (confirm(msg)) {
@@ -415,6 +418,9 @@ function initContactForm() {
         const data = await response.json();
 
         if (response.ok && data.success) {
+          if (typeof window.gtagSendEvent === 'function') {
+            window.gtagSendEvent();
+          }
           const quoteId = data.quotation ? data.quotation.id : 'Recorded';
           const msg = `Thank you, ${payload.name}!\n\nYour commercial quotation request for "${payload.product}" (Ref #${quoteId}) has been received at Roorkee Works.\n\nWe will share your formal quotation within 2-4 business hours.\n\nWould you like to connect directly on WhatsApp with our sales desk right now?`;
           if (confirm(msg)) {
@@ -724,6 +730,9 @@ function initRequestForQuotation() {
       rfqBadge.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
+        if (typeof window.gtagSendEvent === 'function') {
+          window.gtagSendEvent();
+        }
         const details = extractProductDetails(container);
         openRFQModal(details);
       });
@@ -799,6 +808,9 @@ function initRequestForQuotation() {
         const data = await response.json();
 
         if (response.ok && data.success) {
+          if (typeof window.gtagSendEvent === 'function') {
+            window.gtagSendEvent();
+          }
           const quoteId = data.quotation ? data.quotation.id : 'Recorded';
 
           // Show Success View

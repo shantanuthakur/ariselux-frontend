@@ -14,6 +14,24 @@
     gtag('config', 'AW-18518316054');
     gtag('config', 'G-8824V6WTSS');
   </script>
+  <!-- Google tag (gtag.js) event - delayed navigation helper -->
+  <script>
+    // Helper function to delay opening a URL until a gtag event is sent.
+    // Call it in response to an action that should navigate to a URL.
+    function gtagSendEvent(url) {
+      var callback = function () {
+        if (typeof url === 'string') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'ads_conversion_Begin_checkout_1', {
+        'event_callback': callback,
+        'event_timeout': 2000,
+        // <event_parameters>
+      });
+      return false;
+    }
+  </script>
   <title>Mobile Light Tower Manufacturer in India | Battery, Diesel &amp; Solar Supplier - Ariselux</title>
   <meta name="description" content="Ariselux is a leading mobile light tower manufacturer in India. Direct factory supply of battery operated, diesel, solar &amp; hybrid lighting towers with Kubota engines &amp; up to 12m telescopic masts.">
   <meta name="keywords" content="mobile light tower manufacturer, mobile light tower manufacturer in india, battery operated mobile light tower, battery operated light tower manufacturer, mobile light tower supplier india, portable light tower, solar mobile light tower, diesel mobile light tower, ariselux">

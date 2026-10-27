@@ -14,6 +14,24 @@
     gtag('config', 'AW-18518316054');
     gtag('config', 'G-8824V6WTSS');
   </script>
+  <!-- Google tag (gtag.js) event - delayed navigation helper -->
+  <script>
+    // Helper function to delay opening a URL until a gtag event is sent.
+    // Call it in response to an action that should navigate to a URL.
+    function gtagSendEvent(url) {
+      var callback = function () {
+        if (typeof url === 'string') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'ads_conversion_Begin_checkout_1', {
+        'event_callback': callback,
+        'event_timeout': 2000,
+        // <event_parameters>
+      });
+      return false;
+    }
+  </script>
   <title id="page-title">Mobile Light Tower Specifications &amp; Models - Ariselux</title>
   <meta name="description" id="page-meta-desc" content="Explore heavy-duty diesel, solar, battery-operated, and portable mobile light tower models by Ariselux. Full technical specifications and direct factory quotation.">
   <meta name="keywords" content="mobile light tower, solar mobile light tower, diesel mobile light tower, battery light tower, portable lighting mast, ariselux">

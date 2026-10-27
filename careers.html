@@ -15,6 +15,24 @@
     gtag('config', 'AW-18518316054');
     gtag('config', 'G-8824V6WTSS');
   </script>
+  <!-- Google tag (gtag.js) event - delayed navigation helper -->
+  <script>
+    // Helper function to delay opening a URL until a gtag event is sent.
+    // Call it in response to an action that should navigate to a URL.
+    function gtagSendEvent(url) {
+      var callback = function () {
+        if (typeof url === 'string') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'ads_conversion_Begin_checkout_1', {
+        'event_callback': callback,
+        'event_timeout': 2000,
+        // <event_parameters>
+      });
+      return false;
+    }
+  </script>
   <title>Careers at Ariselux - Mobile Lighting Tower Engineering & Manufacturing</title>
   <meta name="description"
     content="Explore career opportunities at Ariselux Equipments Private Limited. Join our engineering, manufacturing, and operations teams at Roorkee Works, Uttarakhand.">

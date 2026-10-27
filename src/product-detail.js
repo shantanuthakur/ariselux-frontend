@@ -843,6 +843,9 @@ function initDetailTabs() {
     btn.addEventListener('click', (e) => {
       const targetTab = btn.dataset.targetTab || 'quotation';
       switchTab(targetTab);
+      if (typeof window.gtagSendEvent === 'function') {
+        window.gtagSendEvent();
+      }
     });
   });
 }
@@ -905,6 +908,9 @@ if (quoteForm) {
       const data = await response.json();
 
       if (response.ok && data.success) {
+        if (typeof window.gtagSendEvent === 'function') {
+          window.gtagSendEvent();
+        }
         const quoteId = data.quotation ? data.quotation.id : 'Recorded';
         quoteForm.style.display = 'none';
         if (quoteSuccessView) {
@@ -1009,6 +1015,9 @@ if (enqForm) {
       const data = await response.json();
 
       if (response.ok && data.success) {
+        if (typeof window.gtagSendEvent === 'function') {
+          window.gtagSendEvent();
+        }
         const enqId = data.enquiry ? data.enquiry.id : 'Recorded';
         enqForm.style.display = 'none';
         if (enqSuccessView) {
