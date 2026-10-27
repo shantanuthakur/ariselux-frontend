@@ -410,8 +410,6 @@ function renderPricingSystem(product) {
     formattedTotalPrice: '₹ 4,72,000',
     unit: 'Ex-Works Roorkee Plant',
     hsnCode: '85131090',
-    rentalPerDay: '₹ 2,200 - ₹ 2,600',
-    rentalPerMonth: '₹ 42,000 - ₹ 50,000',
     leadTime: 'Ready Stock Roorkee',
     warranty: '12 Months Comprehensive Onsite Warranty'
   };
@@ -423,7 +421,7 @@ function renderPricingSystem(product) {
       <div class="hero-price-left">
         <span class="hero-price-tagline"><span class="pulse-dot"></span> Official Factory Direct Pricing • Roorkee Works</span>
         <div class="hero-price-amount-wrap">
-          <span class="hero-price-main">${pricing.formattedExFactory}</span>
+          <span class="hero-price-main">${pricing.formattedExFactory} <span style="font-size: 16px; font-weight: 600; color: #64748b; letter-spacing: normal;">/ Piece</span></span>
           <span class="hero-price-gst">+ 18% GST (${pricing.formattedGstAmount})</span>
           <span class="hero-price-total">| Net: <strong>${pricing.formattedTotalPrice}</strong></span>
         </div>
@@ -446,7 +444,7 @@ function renderPricingSystem(product) {
   function updateTierCards() {
     if (!tierGrid) return;
     const currentPrice = showInclGst ? pricing.formattedTotalPrice : pricing.formattedExFactory;
-    const currentTaxLabel = showInclGst ? 'Including 18% GST' : 'Ex-Factory / Excl. 18% GST';
+    const currentTaxLabel = showInclGst ? 'Total / Piece (Incl. 18% GST)' : 'Price / Piece (Excl. 18% GST)';
 
     tierGrid.innerHTML = `
       <!-- Card 1: Standard Unit Purchase -->
@@ -458,10 +456,10 @@ function renderPricingSystem(product) {
           <p class="pricing-card-desc">Standard procurement for single-site deployment, contractors, and replacement fleets.</p>
         </div>
         <div class="pricing-rate-block">
-          <div class="pricing-main-number">${currentPrice} <span class="sub-period">/ Unit</span></div>
+          <div class="pricing-main-number">${currentPrice} <span class="sub-period">/ Piece</span></div>
           <div class="pricing-tax-sub"><span>🏷️ ${currentTaxLabel}</span></div>
           <table class="pricing-breakdown-table">
-            <tr><td>Ex-Works Base:</td><td class="val">${pricing.formattedExFactory}</td></tr>
+            <tr><td>Base Price:</td><td class="val">${pricing.formattedExFactory}</td></tr>
             <tr><td>CGST (9%) + SGST (9%):</td><td class="val">${pricing.formattedGstAmount}</td></tr>
             <tr><td>Total Payable:</td><td class="val">${pricing.formattedTotalPrice}</td></tr>
           </table>
@@ -489,12 +487,12 @@ function renderPricingSystem(product) {
           <p class="pricing-card-desc">Volume-tiered tariffs for mega infrastructure, highway packages, and mining concessions.</p>
         </div>
         <div class="pricing-rate-block">
-          <div class="pricing-main-number">Volume Rebate <span class="sub-period">(5% - 12%)</span></div>
+          <div class="pricing-main-number">Volume Discount <span class="sub-period">(5% - 10%)</span></div>
           <div class="pricing-tax-sub"><span>💼 Custom Tender &amp; Institutional Rates</span></div>
           <table class="pricing-breakdown-table">
-            <tr><td>2 - 5 Units:</td><td class="val">5% Off Ex-Works</td></tr>
-            <tr><td>6 - 10 Units:</td><td class="val">8% Off Ex-Works</td></tr>
-            <tr><td>10+ Units (Tender):</td><td class="val">12% Factory Rebate</td></tr>
+            <tr><td>2 - 5 Units:</td><td class="val">5% Discount</td></tr>
+            <tr><td>6 - 10 Units:</td><td class="val">8% Discount</td></tr>
+            <tr><td>10+ Units (Tender):</td><td class="val">10% Discount</td></tr>
           </table>
         </div>
         <ul class="pricing-features-list">
@@ -508,36 +506,6 @@ function renderPricingSystem(product) {
           <a href="https://wa.me/918923730881?text=Hello%20Ariselux,%20we%20want%20to%20negotiate%20fleet%20pricing%20for%20${encodeURIComponent(product.title)}" target="_blank" class="btn-solid btn-pricing-action" style="background:#16a34a; border-color:#16a34a; color:#fff;">
             <span>Negotiate Fleet Order via WhatsApp</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Card 3: Project Rental / Lease-to-Own -->
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <div class="pricing-card-category">Short &amp; Long Term Lease</div>
-          <h3 class="pricing-card-title">Site Rental / Lease</h3>
-          <p class="pricing-card-desc">Flexible turnkey hire solutions for time-bound highway resurfacing, events, or shutdowns.</p>
-        </div>
-        <div class="pricing-rate-block">
-          <div class="pricing-main-number">${pricing.rentalPerDay || '₹ 2,500'} <span class="sub-period">/ Day</span></div>
-          <div class="pricing-tax-sub"><span>⏱️ Monthly: ${pricing.rentalPerMonth || '₹ 50,000 / Month'}</span></div>
-          <table class="pricing-breakdown-table">
-            <tr><td>Minimum Duration:</td><td class="val">7 Days Deployment</td></tr>
-            <tr><td>Security Deposit:</td><td class="val">Refundable Commercial</td></tr>
-            <tr><td>Maintenance Support:</td><td class="val">Included by Ariselux</td></tr>
-          </table>
-        </div>
-        <ul class="pricing-features-list">
-          <li><span class="check-icon">✓</span> <span><strong>Zero Initial Capital Expenditure (100% OPEX)</strong></span></li>
-          <li><span class="check-icon">✓</span> <span>Rapid machine mobilization across North &amp; Western India</span></li>
-          <li><span class="check-icon">✓</span> <span>24/7 Breakdown machine replacement guarantee</span></li>
-          <li><span class="check-icon">✓</span> <span>Option to convert rental fees toward purchase (Lease-to-Own)</span></li>
-        </ul>
-        <div class="pricing-card-action">
-          <a href="#action-forms-section" class="btn-outline btn-pricing-action btn-tab-trigger" data-target-tab="enquiry">
-            <span>Inquire on Equipment Rental</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
           </a>
         </div>
       </div>

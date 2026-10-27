@@ -7225,12 +7225,15 @@ img.footer-logo {
   transform: translateX(22px);
 }
 
-/* 3-Tier Commercial Package Cards */
+/* Commercial Package Cards */
 .pricing-tier-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
   margin-bottom: 35px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pricing-card {
@@ -7933,7 +7936,7 @@ img.footer-logo {
 .card-price-primary {
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 5px;
 }
 
 .card-price-primary .price-lbl {
@@ -7945,9 +7948,17 @@ img.footer-logo {
 }
 
 .card-price-primary .price-val {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 900;
   color: #0b1b3d;
+  letter-spacing: -0.01em;
+}
+
+.card-price-primary .price-unit {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: none;
 }
 
 .card-price-meta {
