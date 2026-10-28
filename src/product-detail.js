@@ -547,7 +547,7 @@ function renderPricingSystem(product) {
         <div class="pricing-spec-icon">🏭</div>
         <div class="pricing-spec-meta">
           <h4>Works Dispatch Point</h4>
-          <p>Khasra No. 618 Latifpur Khubbanpur, Bhagwanpur - Roorkee Plant</p>
+          <p>Khasra No. 638 Latifpur Khubbanpur, Bhagwanpur - Roorkee Plant</p>
         </div>
       </div>
       <div class="pricing-spec-item">
