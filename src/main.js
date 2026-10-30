@@ -338,6 +338,16 @@ function initContactForm() {
           if (typeof window.gtagSendEvent === 'function') {
             window.gtagSendEvent();
           }
+          if (typeof window.gtagSendEvent === 'function') {
+            window.gtagSendEvent();
+          }
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'generate_lead', {
+              event_category: 'Lead',
+              event_label: product,
+              send_to: 'AW-18518316054'
+            });
+          }
           const enqId = data.enquiry ? data.enquiry.id : 'Recorded';
           const msg = `Thank you, ${payload.name}!\n\nYour technical enquiry (#${enqId}) has been received by our sales engineering desk at Roorkee Works.\n\nWe will connect via ${payload.preferredChannel} within 2-4 business hours.\n\nWould you like to open WhatsApp now to chat with our engineering desk?`;
           if (confirm(msg)) {
@@ -1177,6 +1187,16 @@ function initEnquiryModal() {
         const data = await response.json();
 
         if (response.ok && data.success) {
+          if (typeof window.gtagSendEvent === 'function') {
+            window.gtagSendEvent();
+          }
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'generate_lead', {
+              event_category: 'Lead',
+              event_label: product,
+              send_to: 'AW-18518316054'
+            });
+          }
           const enqId = data.enquiry ? data.enquiry.id : 'Recorded';
           enquiryForm.style.display = 'none';
           enquirySuccessView.style.display = 'block';
@@ -1478,3 +1498,49 @@ function initCareerForm() {
 }
 
 initCareerForm();
+
+// ============================================
+// --- GOOGLE ADS & CONVERSION TRACKING (AW-18518316054) ---
+// ============================================
+function initGoogleAdsTracking() {
+  // Track Phone Call Clicks
+  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'phone_call_click', {
+          event_category: 'Contact',
+          event_label: link.getAttribute('href') || '+918923730881',
+          send_to: 'AW-18518316054'
+        });
+      }
+    });
+  });
+
+  // Track WhatsApp Clicks
+  document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp.com"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'whatsapp_chat_click', {
+          event_category: 'Contact',
+          event_label: 'WhatsApp Chat',
+          send_to: 'AW-18518316054'
+        });
+      }
+    });
+  });
+
+  // Track Product Brochure Downloads
+  document.querySelectorAll('a[href*="brochure-portfolio.pdf"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'brochure_download', {
+          event_category: 'Lead',
+          event_label: 'Product Catalog PDF',
+          send_to: 'AW-18518316054'
+        });
+      }
+    });
+  });
+}
+
+initGoogleAdsTracking();
