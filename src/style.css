@@ -1821,12 +1821,22 @@ body.nav-open .floating-actions,
   }
 
   .client-logo-item {
-    height: 92px;
-    padding: 10px 12px;
+    min-height: 140px;
+    height: auto;
+    padding: 12px 8px 10px;
   }
 
-  .client-logo-item img {
-    max-height: 58px;
+  .client-logo-thumb {
+    height: 52px;
+    margin-bottom: 8px;
+  }
+
+  .client-logo-thumb img {
+    max-height: 42px;
+  }
+
+  .client-logo-title {
+    font-size: 11px;
   }
 
   .logo-slider-track {
@@ -1842,35 +1852,79 @@ body.nav-open .floating-actions,
 
 .client-logo-item {
   background: #ffffff;
-  border: 1.5px solid #cbd5e1;
+  border: 1.5px solid #e2e8f0;
   border-radius: 10px;
-  height: 110px;
-  padding: 12px 18px;
+  min-height: 154px;
+  height: auto;
+  padding: 16px 12px 14px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+  justify-content: flex-start;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+  position: relative;
+  overflow: hidden;
 }
 
 .client-logo-item:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   border-color: var(--primary);
-  box-shadow: 0 12px 30px rgba(27, 95, 170, 0.24);
+  box-shadow: 0 14px 30px rgba(27, 95, 170, 0.18);
 }
 
-.client-logo-item img {
-  max-width: 92%;
-  max-height: 72px;
+.client-logo-thumb {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding: 6px 8px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #edf2f7;
+  transition: all 0.3s ease;
+}
+
+.client-logo-item:hover .client-logo-thumb {
+  background: #f0f7ff;
+  border-color: rgba(27, 95, 170, 0.2);
+}
+
+.client-logo-thumb img {
+  max-width: 100%;
+  max-height: 48px;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  filter: contrast(1.25) saturate(1.5) brightness(0.97);
-  opacity: 1;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: contrast(1.08) saturate(1.1);
 }
 
-.client-logo-item:hover img {
-  transform: scale(1.1);
-  filter: contrast(1.3) saturate(1.65) brightness(0.96);
+.client-logo-item:hover .client-logo-thumb img {
+  transform: scale(1.08);
+}
+
+.client-logo-tag {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.client-logo-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--gray-900);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+  margin-top: auto;
 }
 
 .clients-grid {
