@@ -2371,6 +2371,13 @@ img.footer-logo {
   box-shadow: 0 6px 16px rgba(24, 119, 242, 0.3);
 }
 
+.social-links a.social-ig:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-color: #d62976;
+  color: var(--white);
+  box-shadow: 0 6px 16px rgba(225, 48, 108, 0.35);
+}
+
 .social-links a.social-pdf:hover {
   background: #f47920;
   border-color: #f47920;
