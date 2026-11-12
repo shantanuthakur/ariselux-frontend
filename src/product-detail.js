@@ -74,7 +74,6 @@ function renderProductDetail() {
     new URL(image, window.location.origin).href
   ));
 
-  if (product.price) {
   const productMarkup = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -94,15 +93,7 @@ function renderProductDetail() {
       url: window.location.origin
     },
     category: product.categoryName || 'Mobile Light Towers',
-    keywords: `${product.title}, mobile light tower, ${product.categoryName} mobile light tower, mobile light tower manufacturer, battery operated light tower`,
-    offers: {
-      '@type': 'Offer',
-      url: productUrl.href,
-      priceCurrency: 'INR',
-      ...(product.price ? { price: product.price.replace(/[^0-9.]/g, '') } : {}),
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition'
-    }
+    keywords: `${product.title}, mobile light tower, ${product.categoryName} mobile light tower, mobile light tower manufacturer, battery operated light tower`
   };
 
   // Only publish ratings when genuine product data is available.
@@ -116,10 +107,6 @@ function renderProductDetail() {
   }
 
   productSchema.textContent = JSON.stringify(productMarkup);
-  } else {
-    // Quote-only products have no public price, so do not publish an invalid Offer.
-    productSchema.remove();
-  }
 
   let breadcrumbSchema = document.getElementById('breadcrumb-structured-data');
   if (!breadcrumbSchema) {
@@ -391,188 +378,8 @@ function renderProductDetail() {
     el.textContent = product.title;
   });
 
-  // ── Render Official Pricing System ──────────────────────
-  renderPricingSystem(product);
-
   // ── Render Client Reviews System ────────────────────────
   renderReviewsSystem(product);
-}
-
-// ── Pricing System Implementation ──────────────────────────
-function renderPricingSystem(product) {
-  const pricing = product.pricing || {
-    exFactory: 400000,
-    formattedExFactory: product.price || '₹ 4,00,000',
-    gstPercent: 18,
-    gstAmount: 72000,
-    formattedGstAmount: '₹ 72,000',
-    totalPrice: 472000,
-    formattedTotalPrice: '₹ 4,72,000',
-    unit: 'Ex-Works Roorkee Plant',
-    hsnCode: '94054090',
-    leadTime: 'Ready Stock Roorkee',
-    warranty: '12 Months Comprehensive Onsite Warranty'
-  };
-
-  // 1. Hero Pricing Banner
-  const heroPricing = document.getElementById('hero-pricing-banner');
-  if (heroPricing) {
-    heroPricing.innerHTML = `
-      <div class="hero-price-left">
-        <span class="hero-price-tagline"><span class="pulse-dot"></span> Official Factory Direct Pricing • Roorkee Works</span>
-        <div class="hero-price-amount-wrap">
-          <span class="hero-price-main">${pricing.formattedExFactory} <span style="font-size: 16px; font-weight: 600; color: #64748b; letter-spacing: normal;">/ Piece</span></span>
-          <span class="hero-price-gst">+ 18% GST (${pricing.formattedGstAmount})</span>
-          <span class="hero-price-total">| Net: <strong>${pricing.formattedTotalPrice}</strong></span>
-        </div>
-      </div>
-      <div class="hero-price-right">
-        <span class="hero-price-badge-itc">✓ 18% GST ITC Eligible</span>
-        <span class="hero-price-hsn">HSN Code: ${pricing.hsnCode || '94054090'}</span>
-      </div>
-    `;
-  }
-
-  // 2. Pricing Tier Grid & Toggle
-  const tierGrid = document.getElementById('pricing-tier-grid');
-  const taxToggle = document.getElementById('tax-mode-toggle');
-  const lblEx = document.getElementById('toggle-lbl-ex');
-  const lblInc = document.getElementById('toggle-lbl-inc');
-
-  let showInclGst = false;
-
-  function updateTierCards() {
-    if (!tierGrid) return;
-    const currentPrice = showInclGst ? pricing.formattedTotalPrice : pricing.formattedExFactory;
-    const currentTaxLabel = showInclGst ? 'Total / Piece (Incl. 18% GST)' : 'Price / Piece (Excl. 18% GST)';
-
-    tierGrid.innerHTML = `
-      <!-- Card 1: Standard Unit Purchase -->
-      <div class="pricing-card featured">
-        <span class="pricing-ribbon">Most Procured</span>
-        <div class="pricing-card-header">
-          <div class="pricing-card-category">OEM Direct Purchase</div>
-          <h3 class="pricing-card-title">Single Unit Order</h3>
-          <p class="pricing-card-desc">Standard procurement for single-site deployment, contractors, and replacement fleets.</p>
-        </div>
-        <div class="pricing-rate-block">
-          <div class="pricing-main-number">${currentPrice} <span class="sub-period">/ Piece</span></div>
-          <div class="pricing-tax-sub"><span>🏷️ ${currentTaxLabel}</span></div>
-          <table class="pricing-breakdown-table">
-            <tr><td>Base Price:</td><td class="val">${pricing.formattedExFactory}</td></tr>
-            <tr><td>CGST (9%) + SGST (9%):</td><td class="val">${pricing.formattedGstAmount}</td></tr>
-            <tr><td>Total Payable:</td><td class="val">${pricing.formattedTotalPrice}</td></tr>
-          </table>
-        </div>
-        <ul class="pricing-features-list">
-          <li><span class="check-icon">✓</span> <span><strong>12 Months Comprehensive Onsite Warranty</strong></span></li>
-          <li><span class="check-icon">✓</span> <span><strong>100% Tax Deductible (18% ITC Claimable)</strong></span></li>
-          <li><span class="check-icon">✓</span> <span>Factory Quality &amp; Lux Test Certificate included</span></li>
-          <li><span class="check-icon">✓</span> <span>Complete user operation &amp; maintenance manuals</span></li>
-          <li><span class="check-icon">✓</span> <span>${pricing.leadTime || 'Ready Stock for immediate dispatch'}</span></li>
-        </ul>
-        <div class="pricing-card-action">
-          <a href="#action-forms-section" class="btn-solid-dark btn-pricing-action btn-tab-trigger" data-target-tab="quotation">
-            <span>Request Commercial Quotation</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Card 2: Bulk Fleet / Project Orders -->
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <div class="pricing-card-category">Fleet &amp; EPC Contracts</div>
-          <h3 class="pricing-card-title">Project Fleet (2+ Units)</h3>
-          <p class="pricing-card-desc">Volume-tiered tariffs for mega infrastructure, highway packages, and mining concessions.</p>
-        </div>
-        <div class="pricing-rate-block">
-          <div class="pricing-main-number">Volume Discount <span class="sub-period">(5% - 10%)</span></div>
-          <div class="pricing-tax-sub"><span>💼 Custom Tender &amp; Institutional Rates</span></div>
-          <table class="pricing-breakdown-table">
-            <tr><td>2 - 5 Units:</td><td class="val">5% Discount</td></tr>
-            <tr><td>6 - 10 Units:</td><td class="val">8% Discount</td></tr>
-            <tr><td>10+ Units (Tender):</td><td class="val">10% Discount</td></tr>
-          </table>
-        </div>
-        <ul class="pricing-features-list">
-          <li><span class="check-icon">✓</span> <span><strong>Dedicated Roorkee Works Service Engineer</strong></span></li>
-          <li><span class="check-icon">✓</span> <span>Scheduled phased site deliveries across multiple states</span></li>
-          <li><span class="check-icon">✓</span> <span>Free initial 500-hour filtration &amp; service maintenance kit</span></li>
-          <li><span class="check-icon">✓</span> <span>Comprehensive onsite operator safety training</span></li>
-          <li><span class="check-icon">✓</span> <span>Direct factory spares supply agreement</span></li>
-        </ul>
-        <div class="pricing-card-action">
-          <a href="https://wa.me/918923730881?text=Hello%20Ariselux,%20we%20want%20to%20negotiate%20fleet%20pricing%20for%20${encodeURIComponent(product.title)}" target="_blank" class="btn-solid btn-pricing-action" style="background:#16a34a; border-color:#16a34a; color:#fff;">
-            <span>Negotiate Fleet Order via WhatsApp</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-          </a>
-        </div>
-      </div>
-    `;
-  }
-
-  updateTierCards();
-
-  if (taxToggle) {
-    taxToggle.addEventListener('change', () => {
-      showInclGst = taxToggle.checked;
-      if (lblEx) lblEx.classList.toggle('active', !showInclGst);
-      if (lblInc) lblInc.classList.toggle('active', showInclGst);
-      updateTierCards();
-    });
-  }
-  if (lblEx) {
-    lblEx.addEventListener('click', () => {
-      if (taxToggle && taxToggle.checked) {
-        taxToggle.checked = false;
-        taxToggle.dispatchEvent(new Event('change'));
-      }
-    });
-  }
-  if (lblInc) {
-    lblInc.addEventListener('click', () => {
-      if (taxToggle && !taxToggle.checked) {
-        taxToggle.checked = true;
-        taxToggle.dispatchEvent(new Event('change'));
-      }
-    });
-  }
-
-  // 3. Commercial Specifications & Trust Strip
-  const specBanner = document.getElementById('pricing-spec-banner');
-  if (specBanner) {
-    specBanner.innerHTML = `
-      <div class="pricing-spec-item">
-        <div class="pricing-spec-icon">🏭</div>
-        <div class="pricing-spec-meta">
-          <h4>Works Dispatch Point</h4>
-          <p>Khasra No. 638 Latifpur Khubbanpur, Bhagwanpur - Roorkee Plant</p>
-        </div>
-      </div>
-      <div class="pricing-spec-item">
-        <div class="pricing-spec-icon">📜</div>
-        <div class="pricing-spec-meta">
-          <h4>HSN Code &amp; Tax Credit</h4>
-          <p>HSN ${pricing.hsnCode || '94054090'} | Full 18% GST Input Tax Credit (ITC)</p>
-        </div>
-      </div>
-      <div class="pricing-spec-item">
-        <div class="pricing-spec-icon">⏱️</div>
-        <div class="pricing-spec-meta">
-          <h4>Transit &amp; Readiness</h4>
-          <p>${pricing.leadTime || 'Ready Stock'} | Pan-India Road Towable / Freight</p>
-        </div>
-      </div>
-      <div class="pricing-spec-item">
-        <div class="pricing-spec-icon">🛡️</div>
-        <div class="pricing-spec-meta">
-          <h4>OEM Warranty Guarantee</h4>
-          <p>${pricing.warranty || '12 Months Comprehensive Onsite Warranty'}</p>
-        </div>
-      </div>
-    `;
-  }
 }
 
 // ── Reviews System Implementation ──────────────────────────

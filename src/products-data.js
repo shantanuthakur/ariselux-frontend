@@ -165,24 +165,6 @@ export const productsData = {
         }
       ]
     },
-        price: '₹ 4,70,000',
-    pricing: {
-          "exFactory": 470000,
-          "formattedExFactory": "₹ 4,70,000",
-          "gstPercent": 18,
-          "gstAmount": 84600,
-          "formattedGstAmount": "₹ 84,600",
-          "totalPrice": 554600,
-          "formattedTotalPrice": "₹ 5,54,600",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 2,800 - ₹ 3,200",
-          "rentalPerMonth": "₹ 55,000 - ₹ 65,000",
-          "leadTime": "Ready Stock (Immediate Dispatch Roorkee)",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
-    },
     aggregateRating: {
           "ratingValue": 4.9,
           "reviewCount": 34,
@@ -418,24 +400,6 @@ export const productsData = {
         }
       ]
     },
-        price: '₹ 4,20,000',
-    pricing: {
-          "exFactory": 420000,
-          "formattedExFactory": "₹ 4,20,000",
-          "gstPercent": 18,
-          "gstAmount": 75600,
-          "formattedGstAmount": "₹ 75,600",
-          "totalPrice": 495600,
-          "formattedTotalPrice": "₹ 4,95,600",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 2,400 - ₹ 2,800",
-          "rentalPerMonth": "₹ 48,000 - ₹ 56,000",
-          "leadTime": "Ready Stock (Immediate Dispatch Roorkee)",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
-    },
     aggregateRating: {
           "ratingValue": 4.9,
           "reviewCount": 25,
@@ -653,24 +617,6 @@ export const productsData = {
         }
       ]
     },
-        price: '₹ 4,00,000',
-    pricing: {
-          "exFactory": 400000,
-          "formattedExFactory": "₹ 4,00,000",
-          "gstPercent": 18,
-          "gstAmount": 72000,
-          "formattedGstAmount": "₹ 72,000",
-          "totalPrice": 472000,
-          "formattedTotalPrice": "₹ 4,72,000",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 2,200 - ₹ 2,500",
-          "rentalPerMonth": "₹ 42,000 - ₹ 50,000",
-          "leadTime": "Ready Stock (Immediate Dispatch Roorkee)",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
-    },
     aggregateRating: {
           "ratingValue": 4.9,
           "reviewCount": 25,
@@ -868,24 +814,6 @@ export const productsData = {
           ]
         }
       ]
-    },
-        price: '₹ 2,60,000',
-    pricing: {
-          "exFactory": 260000,
-          "formattedExFactory": "₹ 2,60,000",
-          "gstPercent": 18,
-          "gstAmount": 46800,
-          "formattedGstAmount": "₹ 46,800",
-          "totalPrice": 306800,
-          "formattedTotalPrice": "₹ 3,06,800",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 1,500 - ₹ 1,900",
-          "rentalPerMonth": "₹ 30,000 - ₹ 36,000",
-          "leadTime": "Ready Stock (Immediate Dispatch Roorkee)",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
     },
     aggregateRating: {
           "ratingValue": 4.9,
@@ -1086,24 +1014,6 @@ export const productsData = {
         }
       ]
     },
-        price: '₹ 3,50,000',
-    pricing: {
-          "exFactory": 350000,
-          "formattedExFactory": "₹ 3,50,000",
-          "gstPercent": 18,
-          "gstAmount": 63000,
-          "formattedGstAmount": "₹ 63,000",
-          "totalPrice": 413000,
-          "formattedTotalPrice": "₹ 4,13,000",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 1,800 - ₹ 2,200",
-          "rentalPerMonth": "₹ 36,000 - ₹ 42,000",
-          "leadTime": "Ready Stock Roorkee",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
-    },
     aggregateRating: {
           "ratingValue": 4.9,
           "reviewCount": 16,
@@ -1292,24 +1202,6 @@ export const productsData = {
         }
       ]
     },
-        price: '₹ 4,00,000',
-    pricing: {
-          "exFactory": 400000,
-          "formattedExFactory": "₹ 4,00,000",
-          "gstPercent": 18,
-          "gstAmount": 72000,
-          "formattedGstAmount": "₹ 72,000",
-          "totalPrice": 472000,
-          "formattedTotalPrice": "₹ 4,72,000",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 2,200 - ₹ 2,600",
-          "rentalPerMonth": "₹ 42,000 - ₹ 50,000",
-          "leadTime": "Ready Stock Roorkee",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
-    },
     aggregateRating: {
           "ratingValue": 4.9,
           "reviewCount": 16,
@@ -1449,24 +1341,6 @@ export const productsData = {
           ]
         }
       ]
-    },
-        price: '₹ 1,30,000',
-    pricing: {
-          "exFactory": 130000,
-          "formattedExFactory": "₹ 1,30,000",
-          "gstPercent": 18,
-          "gstAmount": 23400,
-          "formattedGstAmount": "₹ 23,400",
-          "totalPrice": 153400,
-          "formattedTotalPrice": "₹ 1,53,400",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 1,000 - ₹ 1,400",
-          "rentalPerMonth": "₹ 18,000 - ₹ 22,000",
-          "leadTime": "Ready Stock Roorkee",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
     },
     aggregateRating: {
           "ratingValue": 4.9,
@@ -1643,24 +1517,6 @@ export const productsData = {
           ]
         }
       ]
-    },
-        price: '₹ 5,50,000',
-    pricing: {
-          "exFactory": 550000,
-          "formattedExFactory": "₹ 5,50,000",
-          "gstPercent": 18,
-          "gstAmount": 99000,
-          "formattedGstAmount": "₹ 99,000",
-          "totalPrice": 649000,
-          "formattedTotalPrice": "₹ 6,49,000",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 3,200 - ₹ 3,600",
-          "rentalPerMonth": "₹ 65,000 - ₹ 75,000",
-          "leadTime": "3 - 5 Days Factory Dispatch",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
     },
     aggregateRating: {
           "ratingValue": 4.9,
@@ -1855,24 +1711,6 @@ export const productsData = {
         }
       ]
     },
-        price: '₹ 5,15,000',
-    pricing: {
-          "exFactory": 515000,
-          "formattedExFactory": "₹ 5,15,000",
-          "gstPercent": 18,
-          "gstAmount": 92700,
-          "formattedGstAmount": "₹ 92,700",
-          "totalPrice": 607700,
-          "formattedTotalPrice": "₹ 6,07,700",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 3,000 - ₹ 3,400",
-          "rentalPerMonth": "₹ 60,000 - ₹ 70,000",
-          "leadTime": "3 - 5 Days Factory Dispatch",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
-    },
     aggregateRating: {
           "ratingValue": 4.9,
           "reviewCount": 16,
@@ -2009,24 +1847,6 @@ export const productsData = {
           ]
         }
       ]
-    },
-        price: '₹ 7,50,000',
-    pricing: {
-          "exFactory": 750000,
-          "formattedExFactory": "₹ 7,50,000",
-          "gstPercent": 18,
-          "gstAmount": 135000,
-          "formattedGstAmount": "₹ 1,35,000",
-          "totalPrice": 885000,
-          "formattedTotalPrice": "₹ 8,85,000",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 4,000 - ₹ 4,800",
-          "rentalPerMonth": "₹ 80,000 - ₹ 95,000",
-          "leadTime": "5 - 7 Days Factory Dispatch (Custom Camera & 4G/5G Config)",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
     },
     aggregateRating: {
           "ratingValue": 4.9,
@@ -2208,24 +2028,6 @@ export const productsData = {
         }
       ]
     },
-        price: '₹ 2,00,000',
-    pricing: {
-          "exFactory": 200000,
-          "formattedExFactory": "₹ 2,00,000",
-          "gstPercent": 18,
-          "gstAmount": 36000,
-          "formattedGstAmount": "₹ 36,000",
-          "totalPrice": 236000,
-          "formattedTotalPrice": "₹ 2,36,000",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 1,200 - ₹ 1,500",
-          "rentalPerMonth": "₹ 22,000 - ₹ 26,000",
-          "leadTime": "Ready Stock Roorkee",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
-    },
     aggregateRating: {
           "ratingValue": 4.9,
           "reviewCount": 16,
@@ -2386,24 +2188,6 @@ export const productsData = {
         }
       ]
     },
-        price: '₹ 1,30,000',
-    pricing: {
-          "exFactory": 130000,
-          "formattedExFactory": "₹ 1,30,000",
-          "gstPercent": 18,
-          "gstAmount": 23400,
-          "formattedGstAmount": "₹ 23,400",
-          "totalPrice": 153400,
-          "formattedTotalPrice": "₹ 1,53,400",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 800 - ₹ 1,100",
-          "rentalPerMonth": "₹ 15,000 - ₹ 18,000",
-          "leadTime": "Ready Stock Roorkee",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
-    },
     aggregateRating: {
           "ratingValue": 4.9,
           "reviewCount": 16,
@@ -2533,24 +2317,6 @@ export const productsData = {
         }
       ]
     },
-        price: '₹ 70,000',
-    pricing: {
-          "exFactory": 70000,
-          "formattedExFactory": "₹ 70,000",
-          "gstPercent": 18,
-          "gstAmount": 12600,
-          "formattedGstAmount": "₹ 12,600",
-          "totalPrice": 82600,
-          "formattedTotalPrice": "₹ 82,600",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 500 - ₹ 700",
-          "rentalPerMonth": "₹ 9,000 - ₹ 12,000",
-          "leadTime": "Ready Stock Roorkee",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
-    },
     aggregateRating: {
           "ratingValue": 4.9,
           "reviewCount": 16,
@@ -2659,24 +2425,6 @@ export const productsData = {
           ]
         }
       ]
-    },
-        price: '₹ 1,85,000',
-    pricing: {
-          "exFactory": 185000,
-          "formattedExFactory": "₹ 1,85,000",
-          "gstPercent": 18,
-          "gstAmount": 33300,
-          "formattedGstAmount": "₹ 33,300",
-          "totalPrice": 218300,
-          "formattedTotalPrice": "₹ 2,18,300",
-          "unit": "Ex-Works Roorkee Plant",
-          "hsnCode": "94054090",
-          "gstRate": "18% GST (ITC Eligible for Business Tax Credit)",
-          "rentalPerDay": "₹ 1,200 - ₹ 1,600",
-          "rentalPerMonth": "₹ 22,000 - ₹ 28,000",
-          "leadTime": "Ready Stock Roorkee",
-          "warranty": "12 Months Comprehensive Onsite Warranty",
-          "itcEligible": true
     },
     aggregateRating: {
           "ratingValue": 4.9,
