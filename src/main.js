@@ -1497,7 +1497,430 @@ function initCareerForm() {
   });
 }
 
-initCareerForm();
+  initCareerForm();
+
+// ============================================
+// VIEW PRICE POPUP & WHATSAPP INSTANT QUOTE
+// ============================================
+function initViewPriceModal() {
+  if (window.__viewPriceInitialized) return;
+  window.__viewPriceInitialized = true;
+
+  const WHATSAPP_NUMBER = '918923730881';
+
+  let vpModal = document.getElementById('view-price-modal');
+  if (!vpModal) {
+    vpModal = document.createElement('div');
+    vpModal.id = 'view-price-modal';
+    vpModal.className = 'vp-modal-overlay';
+    vpModal.setAttribute('role', 'dialog');
+    vpModal.setAttribute('aria-modal', 'true');
+    vpModal.setAttribute('aria-labelledby', 'vp-modal-title');
+    vpModal.innerHTML = `
+      <div class="vp-modal-dialog">
+        <div class="vp-modal-header">
+          <div class="vp-modal-title-group">
+            <span class="vp-oem-badge">Direct Factory Pricing • Roorkee Works</span>
+            <h3 id="vp-modal-title">Request Official Factory Price</h3>
+            <p>Receive ex-works unit pricing, GST details &amp; datasheet from our sales desk</p>
+          </div>
+          <button type="button" class="vp-close-btn" id="vp-close-btn" aria-label="Close View Price Popup">&times;</button>
+        </div>
+
+        <div class="vp-modal-body">
+          <div class="vp-product-card">
+            <img src="/images/hero/hero-bg.png" alt="Selected Model" class="vp-product-thumb" id="vp-product-thumb">
+            <div class="vp-product-info">
+              <span class="vp-product-badge">Selected Model</span>
+              <h4 class="vp-product-name" id="vp-product-name">Ariselux Mobile Light Tower</h4>
+              <p class="vp-product-specs" id="vp-product-specs">Direct Roorkee Works OEM Supply</p>
+            </div>
+          </div>
+
+          <div id="vp-form-view">
+            <div class="vp-notice-banner">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span>Share your WhatsApp number below — our sales team will send you the official price &amp; brochure shortly.</span>
+            </div>
+
+            <form id="vp-form" novalidate>
+              <input type="hidden" id="vp-hidden-product" name="product" value="">
+              <input type="text" name="website_hp" style="position:absolute;left:-9999px;opacity:0;" tabindex="-1" autocomplete="off">
+
+              <div class="vp-form-grid">
+                <div class="vp-form-group">
+                  <label class="vp-label" for="vp-input-name">Your Name <span class="req">*</span></label>
+                  <input type="text" id="vp-input-name" name="name" class="vp-input" placeholder="e.g. Rajesh Sharma" required>
+                </div>
+
+                <div class="vp-form-group">
+                  <label class="vp-label" for="vp-input-phone">WhatsApp / Mobile Number <span class="req">*</span></label>
+                  <input type="tel" id="vp-input-phone" name="phone" class="vp-input" placeholder="e.g. +91 98765 43210" required>
+                </div>
+
+                <div class="vp-form-group">
+                  <label class="vp-label" for="vp-select-quantity">Quantity Required</label>
+                  <select id="vp-select-quantity" name="quantity" class="vp-select">
+                    <option value="1 Unit">1 Unit (Standard Order)</option>
+                    <option value="2 - 5 Units">2 - 5 Units (Fleet Order)</option>
+                    <option value="6 - 10 Units">6 - 10 Units (Project Order)</option>
+                    <option value="10+ Units">10+ Units (Bulk / Tender)</option>
+                  </select>
+                </div>
+
+                <div class="vp-form-group">
+                  <label class="vp-label" for="vp-input-location">Delivery City / State</label>
+                  <input type="text" id="vp-input-location" name="location" class="vp-input" placeholder="e.g. Delhi NCR, Pune, Gujarat">
+                </div>
+              </div>
+
+              <div class="vp-form-error" id="vp-form-error" style="display: none;"></div>
+
+              <button type="submit" class="vp-submit-btn" id="vp-submit-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                </svg>
+                <span>Get Official Price on WhatsApp</span>
+              </button>
+            </form>
+
+            <div class="vp-divider"><span>or</span></div>
+
+            <button type="button" class="vp-direct-wa-btn" id="vp-direct-wa-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              <span>Request Instant Price Directly on WhatsApp</span>
+            </button>
+
+            <div class="vp-trust-footer">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span>ISO 9001:2015 OEM • No Spam • Official GST Quote Within 15–30 Mins</span>
+            </div>
+          </div>
+
+          <div id="vp-success-view" class="vp-success-view" style="display: none;">
+            <div class="vp-success-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h4 class="vp-success-title">Price Request Received!</h4>
+            <div class="vp-ref-pill" id="vp-ref-badge">WhatsApp &amp; Sales Team Notified</div>
+            <p class="vp-success-desc" id="vp-success-msg"></p>
+
+            <div class="vp-wa-preview">
+              <div class="vp-wa-preview-header">
+                <span>WhatsApp Official Price Message</span>
+                <span class="vp-wa-status">Ready</span>
+              </div>
+              <pre class="vp-wa-preview-text" id="vp-wa-preview-text"></pre>
+            </div>
+
+            <div class="vp-success-actions">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="vp-wa-action-btn" id="vp-wa-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                </svg>
+                <span>Open WhatsApp Chat Now</span>
+              </a>
+              <button type="button" class="vp-done-btn" id="vp-done-btn">Done / Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(vpModal);
+  }
+
+  let vpToast = document.getElementById('vp-toast');
+  if (!vpToast) {
+    vpToast = document.createElement('div');
+    vpToast.id = 'vp-toast';
+    vpToast.className = 'vp-toast';
+    vpToast.setAttribute('role', 'status');
+    vpToast.setAttribute('aria-live', 'polite');
+    document.body.appendChild(vpToast);
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  let toastTimer = null;
+  function showToast(message) {
+    vpToast.innerHTML = `
+      <span class="vp-toast-dot"></span>
+      <span>${escapeHtml(message)}</span>
+    `;
+    vpToast.classList.add('active');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      vpToast.classList.remove('active');
+    }, 4500);
+  }
+
+  const closeBtn = document.getElementById('vp-close-btn');
+  const doneBtn = document.getElementById('vp-done-btn');
+  const vpFormView = document.getElementById('vp-form-view');
+  const vpSuccessView = document.getElementById('vp-success-view');
+  const vpForm = document.getElementById('vp-form');
+  const vpFormError = document.getElementById('vp-form-error');
+  const vpProductThumb = document.getElementById('vp-product-thumb');
+  const vpProductName = document.getElementById('vp-product-name');
+  const vpProductSpecs = document.getElementById('vp-product-specs');
+  const vpHiddenProduct = document.getElementById('vp-hidden-product');
+  const vpDirectWaBtn = document.getElementById('vp-direct-wa-btn');
+  const vpRefBadge = document.getElementById('vp-ref-badge');
+  const vpSuccessMsg = document.getElementById('vp-success-msg');
+  const vpWaPreviewText = document.getElementById('vp-wa-preview-text');
+  const vpWaLink = document.getElementById('vp-wa-link');
+
+  let activeProductTitle = 'Ariselux Mobile Light Tower';
+  let hasSubmittedPriceRequest = false;
+
+  function buildWhatsAppMessage({ title, name, phone, quantity, location }) {
+    const lines = [
+      'Hello Ariselux Sales Team,',
+      '',
+      'I would like to receive the official factory price & technical datasheet for the following model:',
+      '',
+      `• *Model:* ${title}`
+    ];
+    if (quantity) lines.push(`• *Quantity:* ${quantity}`);
+    if (name) lines.push(`• *Name:* ${name}`);
+    if (phone) lines.push(`• *WhatsApp / Phone:* ${phone}`);
+    if (location) lines.push(`• *Delivery City:* ${location}`);
+    lines.push(
+      '',
+      'Kindly share the ex-works price, GST breakdown, and estimated delivery timeline. Thank you!'
+    );
+    return lines.join('\n');
+  }
+
+  function extractViewPriceDetails(triggerBtn) {
+    if (triggerBtn.dataset.productTitle) {
+      return {
+        title: triggerBtn.dataset.productTitle,
+        imgSrc: triggerBtn.dataset.productImg || '/images/hero/hero-bg.png',
+        specs: triggerBtn.dataset.productSpecs || 'Direct Roorkee Works OEM Supply'
+      };
+    }
+
+    const card = triggerBtn.closest('.product-detail-card, .product-card, .product-item');
+    const heading = card ? card.querySelector('h4, h3, h5, .product-title') : null;
+    const img = card ? card.querySelector('img') : null;
+    const specsEl = card ? card.querySelector('.product-specs') : null;
+    const specsText = specsEl
+      ? Array.from(specsEl.querySelectorAll('.product-spec'))
+          .map(el => el.textContent.trim())
+          .filter(Boolean)
+          .join(' • ')
+      : '';
+
+    return {
+      title: heading ? heading.textContent.trim().replace(/\s+/g, ' ') : 'Ariselux Mobile Light Tower',
+      imgSrc: img ? img.src : '/images/hero/hero-bg.png',
+      specs: specsText || 'Direct Roorkee Works OEM Supply'
+    };
+  }
+
+  function openViewPriceModal(details) {
+    activeProductTitle = details.title;
+    hasSubmittedPriceRequest = false;
+
+    vpProductName.textContent = details.title;
+    vpProductThumb.src = details.imgSrc || '/images/hero/hero-bg.png';
+    vpProductThumb.alt = details.title;
+    vpProductSpecs.textContent = details.specs || 'Direct Roorkee Works OEM Supply';
+    vpHiddenProduct.value = details.title;
+
+    if (vpFormError) {
+      vpFormError.style.display = 'none';
+      vpFormError.textContent = '';
+    }
+    vpFormView.style.display = 'block';
+    vpSuccessView.style.display = 'none';
+
+    vpModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    const nameInput = document.getElementById('vp-input-name');
+    if (nameInput) {
+      setTimeout(() => nameInput.focus(), 140);
+    }
+  }
+
+  function closeViewPriceModal() {
+    vpModal.classList.remove('active');
+    document.body.style.overflow = '';
+    if (hasSubmittedPriceRequest) {
+      showToast(`Price request for ${activeProductTitle} sent — our team will reply shortly.`);
+    }
+  }
+
+  function showPriceConfirmation({ name, waText, waUrl, refLabel }) {
+    hasSubmittedPriceRequest = true;
+    vpFormView.style.display = 'none';
+    vpSuccessView.style.display = 'block';
+
+    if (vpRefBadge) {
+      vpRefBadge.textContent = refLabel;
+    }
+    if (vpSuccessMsg) {
+      const greeting = name ? `Thank you, <strong>${escapeHtml(name)}</strong>! ` : 'Thank you! ';
+      vpSuccessMsg.innerHTML = `${greeting}Our Ariselux Roorkee sales engineering team has received your price request for <strong>${escapeHtml(activeProductTitle)}</strong>.<br><br>You will receive the official factory price, GST breakdown &amp; technical datasheet shortly from our team (typically within <strong>15–30 minutes</strong> during business hours).`;
+    }
+    if (vpWaPreviewText) {
+      vpWaPreviewText.textContent = waText;
+    }
+    if (vpWaLink) {
+      vpWaLink.href = waUrl;
+    }
+  }
+
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-view-price]');
+    if (!trigger) return;
+    e.preventDefault();
+    e.stopPropagation();
+    openViewPriceModal(extractViewPriceDetails(trigger));
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeViewPriceModal);
+  if (doneBtn) doneBtn.addEventListener('click', closeViewPriceModal);
+  vpModal.addEventListener('click', (e) => {
+    if (e.target === vpModal) closeViewPriceModal();
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && vpModal.classList.contains('active')) {
+      closeViewPriceModal();
+    }
+  });
+
+  if (vpDirectWaBtn) {
+    vpDirectWaBtn.addEventListener('click', () => {
+      const waText = buildWhatsAppMessage({ title: activeProductTitle });
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`;
+
+      showPriceConfirmation({
+        name: '',
+        waText,
+        waUrl,
+        refLabel: 'WhatsApp Price Desk Connected'
+      });
+
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'whatsapp_chat_click', {
+          event_category: 'View Price',
+          event_label: activeProductTitle,
+          send_to: 'AW-18518316054'
+        });
+      }
+    });
+  }
+
+  if (vpForm) {
+    vpForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (vpFormError) {
+        vpFormError.style.display = 'none';
+        vpFormError.textContent = '';
+      }
+
+      const formData = new FormData(vpForm);
+      const name = (formData.get('name') || '').trim();
+      const phone = (formData.get('phone') || '').trim();
+      const quantity = (formData.get('quantity') || '1 Unit').trim();
+      const location = (formData.get('location') || '').trim();
+      const digitsOnly = phone.replace(/[^0-9]/g, '');
+
+      if (name.length < 2) {
+        if (vpFormError) {
+          vpFormError.textContent = 'Please enter your full name to receive the official price.';
+          vpFormError.style.display = 'block';
+        }
+        document.getElementById('vp-input-name')?.focus();
+        return;
+      }
+
+      if (digitsOnly.length < 8) {
+        if (vpFormError) {
+          vpFormError.textContent = 'Please enter a valid 10-digit WhatsApp or mobile number.';
+          vpFormError.style.display = 'block';
+        }
+        document.getElementById('vp-input-phone')?.focus();
+        return;
+      }
+
+      const waText = buildWhatsAppMessage({
+        title: activeProductTitle,
+        name,
+        phone,
+        quantity,
+        location
+      });
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`;
+
+      showPriceConfirmation({
+        name,
+        waText,
+        waUrl,
+        refLabel: 'WhatsApp Connected • Team Notified'
+      });
+
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'whatsapp_chat_click', {
+          event_category: 'View Price',
+          event_label: activeProductTitle,
+          send_to: 'AW-18518316054'
+        });
+      }
+
+      try {
+        const resp = await fetch(apiUrl('quotations'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            phone,
+            product: activeProductTitle,
+            quantity,
+            deliveryLocation: location,
+            specifications: 'Requested official factory price via View Price button.',
+            entryType: 'quotation',
+            source: 'view-price-modal'
+          })
+        });
+        const data = await resp.json();
+        if (resp.ok && data.success && data.quotation?.id && vpRefBadge) {
+          vpRefBadge.textContent = `Ref #${data.quotation.id} • Team Notified`;
+        }
+      } catch (err) {
+        console.warn('View Price background registration fallback:', err);
+      }
+
+      vpForm.reset();
+    });
+  }
+}
+
+initViewPriceModal();
 
 // ============================================
 // --- GOOGLE ADS & CONVERSION TRACKING (AW-18518316054) ---

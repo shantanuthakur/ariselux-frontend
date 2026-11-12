@@ -135,6 +135,15 @@ function renderProductDetail() {
   const titleEl = document.getElementById('product-title');
   if (titleEl) titleEl.textContent = product.title;
 
+  const heroViewPriceBtn = document.getElementById('hero-view-price-btn');
+  if (heroViewPriceBtn) {
+    heroViewPriceBtn.dataset.productTitle = product.title;
+    heroViewPriceBtn.dataset.productImg = product.image || '';
+    heroViewPriceBtn.dataset.productSpecs = product.tagline || (product.quickSpecs
+      ? Object.values(product.quickSpecs).map(s => s.value).slice(0, 3).join(' • ')
+      : '');
+  }
+
   // Description
   const descEl = document.getElementById('product-desc');
   if (descEl) descEl.textContent = product.description;
