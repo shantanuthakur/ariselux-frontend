@@ -1605,22 +1605,16 @@ function initViewPriceModal() {
 
   let activeProductTitle = 'Ariselux Mobile Light Tower';
 
-  function buildWhatsAppMessage({ title, specs }) {
-    const lines = [
+  function buildWhatsAppMessage({ title }) {
+    return [
       'Hello Ariselux Team,',
       '',
       'I would like to know the official price & technical details for this product:',
       '',
-      `• *Model:* ${title}`
-    ];
-    if (specs && specs !== 'Direct Roorkee Works OEM Supply') {
-      lines.push(`• *Key Specs:* ${specs}`);
-    }
-    lines.push(
+      `• *Model:* ${title}`,
       '',
       'Please share the official unit price, GST details, and delivery timeline. Thank you!'
-    );
-    return lines.join('\n');
+    ].join('\n');
   }
 
   function extractViewPriceDetails(triggerBtn) {
