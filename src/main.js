@@ -1547,14 +1547,6 @@ function initViewPriceModal() {
             <div class="vp-ref-pill">WhatsApp Price Desk Connected</div>
             <p class="vp-success-desc" id="vp-success-msg"></p>
 
-            <div class="vp-wa-preview">
-              <div class="vp-wa-preview-header">
-                <span>WhatsApp Message</span>
-                <span class="vp-wa-status">Ready</span>
-              </div>
-              <pre class="vp-wa-preview-text" id="vp-wa-preview-text"></pre>
-            </div>
-
             <div class="vp-success-actions">
               <a href="#" target="_blank" rel="noopener noreferrer" class="vp-wa-action-btn" id="vp-wa-link">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -1609,7 +1601,6 @@ function initViewPriceModal() {
   const vpProductName = document.getElementById('vp-product-name');
   const vpProductSpecs = document.getElementById('vp-product-specs');
   const vpSuccessMsg = document.getElementById('vp-success-msg');
-  const vpWaPreviewText = document.getElementById('vp-wa-preview-text');
   const vpWaLink = document.getElementById('vp-wa-link');
 
   let activeProductTitle = 'Ariselux Mobile Light Tower';
@@ -1672,9 +1663,6 @@ function initViewPriceModal() {
 
     if (vpSuccessMsg) {
       vpSuccessMsg.innerHTML = `Thank you for your interest in <strong>${escapeHtml(details.title)}</strong>.<br>You will receive the official price from our Ariselux team shortly on WhatsApp.`;
-    }
-    if (vpWaPreviewText) {
-      vpWaPreviewText.textContent = waText;
     }
     if (vpWaLink) {
       vpWaLink.href = waUrl;

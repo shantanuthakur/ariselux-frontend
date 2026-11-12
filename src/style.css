@@ -7757,46 +7757,7 @@ img.footer-logo {
   font-size: 14px;
   color: #475569;
   line-height: 1.6;
-  margin: 0 auto 16px;
-}
-
-.vp-wa-preview {
-  text-align: left;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  border-radius: 10px;
-  padding: 12px 14px;
-  margin-bottom: 18px;
-}
-
-.vp-wa-preview-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11.5px;
-  font-weight: 800;
-  color: #15803d;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 8px;
-}
-
-.vp-wa-status {
-  background: #16a34a;
-  color: #ffffff;
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 999px;
-}
-
-.vp-wa-preview-text {
-  margin: 0;
-  white-space: pre-wrap;
-  word-break: break-word;
-  font-family: inherit;
-  font-size: 12.5px;
-  line-height: 1.5;
-  color: #1e293b;
+  margin: 0 auto 20px;
 }
 
 .vp-success-actions {
